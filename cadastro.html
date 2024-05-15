@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cadastro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="conteudo">
+            <li class="lista">Personagens</li>
+            <li class="lista">Sobre Mim</li>
+            <li class="logo"><img src="assets/logo.png"></li>
+            <li class="lista">Minigame</li>
+            <li class="lista">Cadastrar</li>
+        </div>
+    </header>
+    <section id="section-principal">
+        <div class="conteudo-secao">
+            <div class="foto">
+
+            </div>
+            <div class="cadastro">
+                <h1>Cadastre-se</h1>
+                <div class="inputs">
+                    <div class="input-isolada">
+                        <span>Usuário</span> <div class="field-group">
+                            <input type="text" class="input-field" placeholder="Digite seu usuário" autocomplete="off">
+                            <div class="icon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                            
+                        </div></div>
+                        <div class="input-isolada">
+                            <span>Email</span> <div class="field-group">
+                                <input type="text" class="input-field" placeholder="digite seu email" autocomplete="off">
+                                <div class="icon">
+                                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                                </div>
+                                
+                            </div></div>
+                            <div class="input-isolada">
+                                <span>Senha</span> <div class="field-group">
+                                    <input type="text" class="input-field" placeholder="digite sua senha" autocomplete="off">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                                    </div>
+                                    
+                                </div></div>
+                                <div class="input-isolada">
+                                    <span>Confirmar Senha</span> <div class="field-group">
+                                        <input type="text" class="input-field" placeholder="confirme sua senha" autocomplete="off">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                                        </div>
+                                        
+                                    </div></div>
+                   
+                    <div class="div-botao">
+                        <button class="botao">Cadastrar</button>
+                    </div>
+                    <div class="texto-input">
+                        <h3 onclick="trocar()">você já possui um login? <span style="color: #00FFFF;">Fazer login</span></h3>
+                    </div>
+                    
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="display: none;" id="section-secundaria">
+        <div class="conteudo-secao">
+            <div class="foto2">
+
+            </div>
+            <div class="cadastro">
+                <h1>Entrar</h1>
+                <div class="inputs">
+                    <div class="input-isolada">
+                        <span>Usuário</span> <div class="field-group">
+                            <input type="text" class="input-field2" placeholder="Digite seu usuário" autocomplete="off">
+                            <div class="icon2">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                            
+                        </div></div>
+                        
+                            <div class="input-isolada">
+                                <span>Senha</span> <div class="field-group">
+                                    <input type="text" class="input-field2" placeholder="digite sua senha" autocomplete="off">
+                                    <div class="icon2">
+                                        <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                                    </div>
+                                    
+                                </div></div>
+                               
+                   
+                    <div class="div-botao">
+                        <button class="botao2">Entrar</button>
+                    </div>
+                    <div class="texto-input">
+                        <h3 onclick="destrocar()">Ainda não possui um login? <span style="color: #ff0000;">Fazer Cadastro</span></h3>
+                    </div>
+                    
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>
+
+<script>
+    function trocar() {
+    var sectionPrimaria = document.getElementById("section-principal");
+    var sectionSecundaria = document.getElementById("section-secundaria");
+    sectionSecundaria.style.display = "block";
+    sectionPrimaria.style.display = "none";
+    }
+    function destrocar() {
+    var sectionPrimaria = document.getElementById("section-principal");
+    var sectionSecundaria = document.getElementById("section-secundaria");
+    sectionPrimaria.style.display = "block";
+    sectionSecundaria.style.display = "none";
+    }
+  
+    
+</script>
