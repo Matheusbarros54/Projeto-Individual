@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="conteudo">
+            <li class="lista">Personagens</li>
+            <li class="lista">Sobre Mim</li>
+            <li class="logo"><img src="assets/images/logo.png"></li>
+            <li class="lista">Minigame</li>
+            <li class="lista">Cadastrar</li>
+        </div>
+    </header>
+    <section id="section-principal">
+        <div class="conteudo-secao">
+            <div class="foto"></div>
+            <div class="cadastro">
+                <h1>Cadastre-se</h1>
+                <div class="inputs">
+                    <div class="input-isolada">
+                        <span>Usuário</span> 
+                        <div class="field-group">
+                            <input id="nome_input" type="text" class="input-field" placeholder="Digite seu usuário" autocomplete="off">
+                            <div class="icon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-isolada">
+                        <span>Email</span> 
+                        <div class="field-group">
+                            <input id="email_input" type="text" class="input-field" placeholder="Digite seu email" autocomplete="off">
+                            <div class="icon">
+                                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-isolada">
+                        <span>Senha</span> 
+                        <div class="field-group">
+                            <input id="senha_input" type="password" class="input-field" placeholder="Digite sua senha" autocomplete="off">
+                            <div class="icon">
+                                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-isolada">
+                        <span>Confirmar Senha</span> 
+                        <div class="field-group">
+                            <input id="confirmacao_senha_input" type="password" class="input-field" placeholder="Confirme sua senha" autocomplete="off">
+                            <div class="icon">
+                                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-botao">
+                        <button class="botao" onclick="cadastrar()">Cadastrar</button>
+                    </div>
+                    <div class="texto-input">
+                        <h3 onclick="trocar()">Você já possui um login? <span style="color: #00FFFF;">Fazer login</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="display: none;" id="section-secundaria">
+        <div class="conteudo-secao">
+            <div class="foto2"></div>
+            <div class="cadastro">
+                <h1>Entrar</h1>
+                <div class="inputs">
+                    <div class="input-isolada">
+                        <span>Usuário</span> 
+                        <div class="field-group">
+                            <input type="text" class="input-field2" placeholder="Digite seu usuário" autocomplete="off" id="login_usuario">
+                            <div class="icon2">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-isolada">
+                        <span>Senha</span> 
+                        <div class="field-group">
+                            <input type="password" class="input-field2" placeholder="Digite sua senha" autocomplete="off" id="login_senha">
+                            <div class="icon2">
+                                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-botao">
+                        <button class="botao2" onclick="entrar()">Entrar</button>
+                    </div>
+                    <div class="texto-input">
+                        <h3 onclick="destrocar()">Ainda não possui um login? <span style="color: #ff0000;">Fazer Cadastro</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+      function trocar() {
+        document.getElementById("section-principal").style.display = "none";
+        document.getElementById("section-secundaria").style.display = "block";
+      }
+
+      function destrocar() {
+        document.getElementById("section-principal").style.display = "block";
+        document.getElementById("section-secundaria").style.display = "none";
+      }
+
+      function cadastrar() {
+        var nomeVar = document.getElementById("nome_input").value;
+        var emailVar = document.getElementById("email_input").value;
+        var senhaVar = document.getElementById("senha_input").value;
+        var confirmacaoSenhaVar = document.getElementById("confirmacao_senha_input").value;
+
+        if (nomeVar === "" || emailVar === "" || senhaVar === "" || confirmacaoSenhaVar === "") {
+          alert("Todos os campos são obrigatórios!");
+          return false;
+        }
+
+        fetch("/usuarios/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+          }),
+        })
+          .then(function (resposta) {
+            if (resposta.ok) {
+              alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+              setTimeout(() => {
+                trocar();
+              }, 800);
+            } else {
+              throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+          });
+
+        return false;
+      }
+
+      function entrar() {
+        var usuarioVar = document.getElementById("login_usuario").value;
+        var senhaVar = document.getElementById("login_senha").value;
+
+        if (usuarioVar === "" || senhaVar === "") {
+          alert("Todos os campos são obrigatórios!");
+          return false;
+        }
+
+        fetch("/usuarios/autenticar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            emailServer: usuarioVar,
+            senhaServer: senhaVar,
+          }),
+        })
+          .then(function (resposta) {
+            if (resposta.ok) {
+              resposta.json().then((json) => {
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+
+                alert("Login realizado com sucesso!");
+                window.location = "./dashboard/cards.html";
+              });
+            } else {
+              throw "Usuário ou senha inválidos!";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+          });
+
+        return false;
+      }
+    </script>
+</body>
+</html>
