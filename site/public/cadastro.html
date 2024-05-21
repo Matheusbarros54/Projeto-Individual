@@ -25,7 +25,7 @@
                 <h1>Cadastre-se</h1>
                 <div class="inputs">
                     <div class="input-isolada">
-                        <span>Usuário</span> 
+                      <div class="mensagens-input"><span>Usuário</span><span class="msg_erro" id="erro_usuario">- Esse Usuário já existe</span></div> 
                         <div class="field-group">
                             <input id="nome_input" type="text" class="input-field" placeholder="Digite seu usuário" autocomplete="off">
                             <div class="icon">
@@ -34,25 +34,27 @@
                         </div>
                     </div>
                     <div class="input-isolada">
-                        <span>Email</span> 
+                      <div class="mensagens-input"><span>Email</span> <span class="msg_erro" id="erro_email">- Email Inválido</span></div>
                         <div class="field-group">
                             <input id="email_input" type="text" class="input-field" placeholder="Digite seu email" autocomplete="off">
                             <div class="icon">
                                 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="input-isolada">
-                        <span>Senha</span> 
+                      <div class="mensagens-input"><span>Senha</span> <span class="msg_erro" id="erro_senha">- Senha Fraca</span></div>
                         <div class="field-group">
                             <input id="senha_input" type="password" class="input-field" placeholder="Digite sua senha" autocomplete="off">
                             <div class="icon">
                                 <i class="fa-solid fa-lock" aria-hidden="true"></i>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="input-isolada">
-                        <span>Confirmar Senha</span> 
+                        <div class="mensagens-input"><span>Confirmar Senha</span> <span class="msg_erro" id="erro_confirmar">- As senhas não são idênticas</span></div>
                         <div class="field-group">
                             <input id="confirmacao_senha_input" type="password" class="input-field" placeholder="Confirme sua senha" autocomplete="off">
                             <div class="icon">
@@ -60,6 +62,7 @@
                             </div>
                         </div>
                     </div>
+                
                     <div class="div-botao">
                         <button class="botao" onclick="cadastrar()">Cadastrar</button>
                     </div>
@@ -76,6 +79,7 @@
             <div class="foto2"></div>
             <div class="cadastro">
                 <h1>Entrar</h1>
+                <span class="msg_erro" id="erro_login">Usuário ou Senha Incorretos</span>
                 <div class="inputs">
                     <div class="input-isolada">
                         <span>Usuário</span> 
@@ -116,16 +120,40 @@
         document.getElementById("section-principal").style.display = "block";
         document.getElementById("section-secundaria").style.display = "none";
       }
-
       function cadastrar() {
         var nomeVar = document.getElementById("nome_input").value;
         var emailVar = document.getElementById("email_input").value;
         var senhaVar = document.getElementById("senha_input").value;
         var confirmacaoSenhaVar = document.getElementById("confirmacao_senha_input").value;
+        var validacao = 0
 
         if (nomeVar === "" || emailVar === "" || senhaVar === "" || confirmacaoSenhaVar === "") {
           alert("Todos os campos são obrigatórios!");
           return false;
+        } 
+        
+        if(senhaVar.length < 6) {
+          erro_senha.style.opacity = '1'
+        } else {
+          erro_senha.style.opacity = '0'
+          validacao++
+        }
+        
+        if(confirmacaoSenhaVar != senhaVar) {
+          erro_confirmar.style.opacity = '1'
+        } else {
+          erro_confirmar.style.opacity = '0'
+          validacao++
+        }
+        
+        if (emailVar.indexOf('@') == -1) {
+          erro_email.style.opacity = '1'
+        } else {
+          erro_email.style.opacity = '0'
+          validacao++
+        }
+        if(validacao < 3) {
+          return false
         }
 
         fetch("/usuarios/cadastrar", {
@@ -191,6 +219,7 @@
           })
           .catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
+            erro_login.style.opacity = '1'
           });
 
         return false;

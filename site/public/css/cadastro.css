@@ -257,5 +257,19 @@ section .conteudo-secao .foto2 {
         cursor: pointer;
 }
 
+.msg_erro{
+    z-index: 999;
+    width: 75%;
+    color: #ff1010;
+    opacity: 0;
+    font-size: 20px !important;
+    padding-left: 5px;
+  }
+  #erro_login {
+    display: flex;
+    justify-content: center;
+  }
 
-
+  .mensagens-input {
+    padding-bottom: 20px;
+}

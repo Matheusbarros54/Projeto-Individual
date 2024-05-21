@@ -1,48 +1,10 @@
-function AbrirModal() {
-    const modal = document.getElementById('quizModal');
-    modal.showModal();
-    mostrarPagina(1);
-}
-
-function FecharModal() {
-    const modal = document.getElementById('quizModal');
-    modal.close();
-}
-
-function mostrarPagina(pagina) {
-    const pages = document.querySelectorAll('.modal.page');
-    pages.forEach((page, index) => {
-        if (index === pagina - 1) {
-            page.style.display = 'flex';
-            page.style.opacity = 0;
-            setTimeout(() => {
-                page.style.opacity = 1;
-                page.style.transition = 'opacity 0.8s';
-            }, 10);
-        } else {
-            page.style.display = 'none';
-        }
-    });
-}
-
-function mostrarProximaPagina(pagina) {
-    mostrarPagina(pagina);
-}
-
-function mostrarPaginaAnterior(pagina) {
-    mostrarPagina(pagina);
-}
-
-
-// Scripts Quiz
-
-
-var lista_respostas = [1, 2, 3, 4, 5, 1, 2, 5, 1]
-var acertos = 0
-var erros = 0
-var qtd_perguntas_respondidas = 0
-
 let respostaSelecionada = false;
+let qtd_perguntas_respondidas = 0;
+let acertos = 0;
+let erros = 0;
+
+// Lista de respostas corretas para cada pergunta
+const lista_respostas = [1, 2, 4, 1, 1, 1, 4, 4, 3]; // Exemplo: respostas corretas para 10 perguntas
 
 function verificarResposta(numero, divClicada) {
     if (respostaSelecionada) {
@@ -51,25 +13,27 @@ function verificarResposta(numero, divClicada) {
 
     respostaSelecionada = true;
 
+    const paginaAtual = document.querySelector('.modal.page.current-page');
     const paginas = document.querySelectorAll('.modal.page');
-    let paginaIndex = 0;
-
-    paginas.forEach((pagina, index) => {
-        if (pagina.style.display === 'flex') {
-            paginaIndex = index;
-        }
-    });
+    const paginaIndex = Array.from(paginas).indexOf(paginaAtual);
 
     qtd_perguntas_respondidas++;
 
-    if (numero == lista_respostas[qtd_perguntas_respondidas - 1]) {
+    if (numero === lista_respostas[qtd_perguntas_respondidas - 1]) {
         acertos++;
         divClicada.classList.add("certa");
     } else {
         erros++;
         divClicada.classList.add("errada");
-        var paginaAtual = document.querySelector('.modal.page[style*="display: flex"]');
-        paginaAtual.querySelector('.alternativas_dupla').querySelectorAll('.alternativa')[lista_respostas[qtd_perguntas_respondidas - 1] - 1].classList.add("certa");
+
+        // Seleciona todas as alternativas da página atual
+        const alternativas = paginaAtual.querySelectorAll('.alternativa');
+        const respostaCorretaIndex = lista_respostas[qtd_perguntas_respondidas - 1] - 1;
+        
+        // Verifica se o índice da resposta correta está dentro do intervalo de alternativas
+        if (respostaCorretaIndex >= 0 && respostaCorretaIndex < alternativas.length) {
+            alternativas[respostaCorretaIndex].classList.add("certa");
+        }
     }
 
     setTimeout(() => {
@@ -78,4 +42,31 @@ function verificarResposta(numero, divClicada) {
     }, 1500);
 }
 
+function mostrarProximaPagina(paginaNumero) {
+    const todasPaginas = document.querySelectorAll('.modal.page');
+    todasPaginas.forEach(pagina => {
+        pagina.style.display = 'none';
+        pagina.style.opacity = '0';
+        pagina.classList.remove('current-page');
+    });
 
+    const proximaPagina = document.querySelector(`.modal.page.page${paginaNumero}`);
+    if (proximaPagina) {
+        proximaPagina.style.display = 'flex';
+        setTimeout(() => {
+            proximaPagina.style.opacity = '1';
+            proximaPagina.classList.add('current-page');
+        }, 10);
+    }
+}
+
+function AbrirModal() {
+    const quizModal = document.getElementById('quizModal');
+    quizModal.showModal();
+    mostrarProximaPagina(1); // Inicia na página 1 do quiz
+}
+
+function FecharModal() {
+    const quizModal = document.getElementById('quizModal');
+    quizModal.close();
+}
