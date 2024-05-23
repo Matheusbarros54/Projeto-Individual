@@ -37,7 +37,7 @@ header .conteudo {
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
-    padding: 0px 150px;
+    padding: 0px 10vw;
 }
 
 a {
@@ -59,7 +59,7 @@ header .conteudo .lista {
     text-align: center;
     padding: 5px 8px;
     border-radius: 15px;
-    font-size: 23px;
+    font-size: 1.25em;
     cursor: pointer;
 }
 
@@ -70,7 +70,7 @@ header .conteudo .logo {
 }
 
 header .conteudo li img {
-    width: 75%;
+    width: 65%;
     margin-top: -10px;
 }
 
@@ -79,12 +79,12 @@ header .conteudo li img {
 .section1 {
     display: flex;
     align-items: center;
-    height: 700px;
+    height: 600px;
     background-image: url(../assets/images/banner.png);
     background-position: center center;
     background-size: cover;
 
-    padding: 0px 150px;
+    padding: 0px 10vw;
 }
 
 .section1 .bloco {
@@ -132,7 +132,7 @@ header .conteudo li img {
     display: flex;
     align-items: center;
     background-color: #1C1C1C;
-    padding: 0px 150px;
+    padding: 0px 10vw;
     padding-top: 130px;
 }
 
@@ -140,7 +140,7 @@ header .conteudo li img {
     display: flex;
     align-items: center;
     background-color: #1C1C1C;
-    padding: 0px 150px;
+    padding: 0px 10vw;
     padding-top: 80px;
 }
 
@@ -243,7 +243,7 @@ header .conteudo li img {
     align-items: center;
     flex-direction: column;
     background-color: #1C1C1C;
-    padding: 0px 100px;
+    padding: 0px 5vw;
     padding-top: 40px;
     height: 500px;
 }
@@ -615,7 +615,7 @@ dialog .mensagem {
     display: flex;
     align-items: center;
     background-color: #1C1C1C;
-    padding: 0px 150px;
+    padding: 0px 10vw;
     padding-top: 130px;
 }
 .section6{

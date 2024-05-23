@@ -33,7 +33,7 @@ header .conteudo .lista{
     text-align: center;
                 padding: 5px 8px;
                 border-radius: 15px;
-                font-size: 23px;
+                font-size: 1.25em;
     }
 
 header .conteudo .logo {
@@ -43,7 +43,7 @@ header .conteudo .logo {
 }
 
 header .conteudo li img {
-width: 75%;
+width: 65%;
 margin-top: -10px;
 }
 
@@ -83,8 +83,10 @@ section .conteudo-secao .foto2 {
     background-color: #1C1C1C;
 }
 .cadastro h1 {
-    font-size: 35px;
+    font-size: 2em;
     font-weight: 100;
+    margin: 0;
+    margin-top: 3%;
     text-align: center;
     text-shadow:
         -5px -5px 0 #000000,  
@@ -94,7 +96,7 @@ section .conteudo-secao .foto2 {
 }
 
 .inputs {
-    font-size: 20px;
+    font-size: 0.8em;
     text-shadow:
         -3px -3px 0 #000000,  
          3px -3px 0 #000000,
@@ -103,13 +105,13 @@ section .conteudo-secao .foto2 {
 }
 .inputs span {
     padding-bottom: 15px;
-    font-size: 23px;
+    font-size: 1.8em;
 }
 .input-isolada {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 15px 0px;
+    padding: 0.8em 0px;
     ;
     
 }
@@ -127,7 +129,7 @@ section .conteudo-secao .foto2 {
     padding: 4px;
     padding-left: 40px;
     background: transparent;
-    font-size: 1em;
+    font-size: 1.5em;
     color: #ffffff;
     font-family: 'Bangers', cursive;
 }
@@ -140,7 +142,7 @@ section .conteudo-secao .foto2 {
     padding: 4px;
     padding-left: 40px;
     background: transparent;
-    font-size: 1em;
+    font-size: 1.5em;
     color: #ffffff;
     font-family: 'Bangers', cursive;
 }
@@ -157,7 +159,7 @@ section .conteudo-secao .foto2 {
     justify-content: center;
     align-items: center;
     color: #00FFFF;
-    font-size: 1.1em;
+    font-size: 1.6em;
     transition: color 0.3s ease;
 }
 .icon2 {
@@ -170,7 +172,7 @@ section .conteudo-secao .foto2 {
     justify-content: center;
     align-items: center;
     color: #ff0000;
-    font-size: 1.1em;
+    font-size: 1.6em;
     transition: color 0.3s ease;
 }
 .input-field:focus {
@@ -244,7 +246,11 @@ section .conteudo-secao .foto2 {
         -5px -5px 0 #000000,  
          5px -5px 0 #000000,
          -5px 5px 0 #000000,
-        5px 5px 0#000000;
+         5px 5px 0#000000;
+         font-size: 1.4em;
+}
+.texto-input span {
+    font-size: 1em;
 }
 .texto-input h3 {
     font-weight: 100;
