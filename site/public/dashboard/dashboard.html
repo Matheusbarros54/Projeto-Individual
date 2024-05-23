@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dragon Ball | Dashboard </title>
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
+    <script src="../js/script.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -33,50 +34,87 @@
             <img src="../assets/images/logo.png" alt="">
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3>Olá, <span id="b_usuario" style="color: #ffaf00;"> usuário </span>!</h3>
             </div>
 
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
+            <div class="btn-nav" onclick="AbrirModal()">
+                    <h3>Quiz</h3>
             </div>
 
             <div class="btn-nav">
 
-                <h3>Gráficos</h3>
+                <h3>Minigames</h3>
 
             </div>
 
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+            <div class="btn-nav">
+                    <h3>Configurações</h3>
                 </a>
             </div>
 
-            <div class="btn-logout" onclick="limparSessao()">
+            <div class="btn-nav" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
 
         </div>
+        <div class="conteudo">
 
-        <div class="dash">
+            <div class="dash">
+                <h1 class="titulo-dash">Painel de Controle</h1>
+
+                <div class="kpis">
+                    <div class="kpi1"><h2>Vezes que Realizou o <br> Quiz</h2> <h3>1 Vez</h3></div>
+                    <div class="kpi2"><h2>Quantidade de Pontos no Total</h2> <h3>11 Pts</h3></div>
+                    <div class="kpi3"><h2>Tempo Médio de Realização do Quiz</h2> <h3>6 Minutos</h3></div>
+
+                </div>
+                <div class="graficos">
+                    <h1 class="titulo-grafico">Quantidade de Pontos ao longo do Tempo</h1>
+                    <canvas id="myChart" width="1400" height="350"></canvas>
+                </div>
+               <div class="graficos-pizza">
+                <div class="grafico1"></div>
+                <div class="grafico2"></div>
+               </div>
+            </div>
             
-            <div class="kpis">
-                <div class="kpi1"></div>
-                <div class="kpi2"></div>
-                <div class="kpi3"></div>
-        
-        </div>
-        <div class="graficos">
-            <div class="grafico1"></div>
-            <div class="grafico1"></div>
-            <div class="grafico1"></div>
-        </div>
-        <div class="graficos">
-
-        </div>
             <div id="alerta">
+            </div>
+            <div class="leaderboard">
+                <h1 class="titulo-h1">Placar de Líderes</h1>
+                <h3 class="titulo-h3">Pontuações</h3>
+                <h3 class="titulo-h3">Você</h3>
+                <div class="pontuacao_usuario">
+                    <h2>2°</h2>
+                    <h2>Matheus</h2>
+                    <h2>11 Pts</h2>
+                </div>
+                <h3 class="titulo-h3">Ranking</h3>
+                <div class="pontuacao_leaderboard">
+                    <h2>1°</h2>
+                    <h2>Antônio</h2>
+                    <h2>13 Pts</h2>
+                </div>
+                <div class="pontuacao_leaderboard">
+                    <h2>2°</h2>
+                    <h2>Matheus</h2>
+                    <h2>11 Pts</h2>
+                </div>
+                <div class="pontuacao_leaderboard">
+                    <h2>3°</h2>
+                    <h2>Renato</h2>
+                    <h2>9 Pts</h2>
+                </div>
+                <div class="pontuacao_leaderboard">
+                    <h2>4°</h2>
+                    <h2>Araújo</h2>
+                    <h2>8 Pts</h2>
+                </div>
+                <div class="pontuacao_leaderboard">
+                    <h2>5°</h2>
+                    <h2>Felps</h2>
+                    <h2>7 Pts</h2>
+                </div>
             </div>
 
             <div class="btns-dash" id="btnAquario">
@@ -93,6 +131,51 @@
 </html>
 
 <script>
+   const ctx = document.getElementById('myChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderColor: 'rgba(255, 152, 10, 1)', // Cor da linha
+                    backgroundColor: 'rgba(255, 152, 10, 0.2)', // Cor de fundo sob a linha
+                    borderWidth: 2, // Largura da linha
+                    pointBackgroundColor: 'rgba(255, 152, 10, 1)', // Cor dos pontos
+                    pointBorderColor: '#FFF500' // Cor da borda dos pontos
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 1)' // Cor dos rótulos verticais
+                        },
+                        grid: {
+                            color: 'rgba(255, 152, 10, 0.2)' // Cor das linhas de grade
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 1)' // Cor dos rótulos horizontais
+                        },
+                        grid: {
+                            color: 'rgba(255, 152, 10, 0.2)' // Cor das linhas de grade
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'rgba(255, 152, 10, 1)' // Cor dos rótulos da legenda
+                        }
+                    }
+                }
+            }
+        });
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
