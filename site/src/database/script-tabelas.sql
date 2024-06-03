@@ -1,59 +1,44 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+create database dragonball;
+describe usuario;
+use dragonball;
 
-/*
-comandos para mysql server
-*/
+create table pontuacoes (
+idPontuacao int primary key auto_increment,
+pontos_recebidos int,
+tipo_jogo varchar(45));
 
-CREATE DATABASE aquatech;
+create table usuario (
+idUsuario int primary key auto_increment,
+nome varchar(50),
+email varchar(50),
+senha varchar(50),
+fkPontuacoes int,
+constraint foreign key (fkPontuacoes) references pontuacoes (idPontuacao));
 
-USE aquatech;
+insert into pontuacoes values 
+(default, 11, 'Quiz'),
+(default, 13, 'Quiz'),
+(default, 9, 'Quiz'),
+(default, 8, 'Quiz'),
+(default, 7, 'Quiz'),
+(default, 7, 'Quiz'),
+(default, 7, 'Quiz'),
+(default, 7, 'Quiz');
 
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14)
-);
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
+insert into usuario values 
+(default, 'matheus', 'matheus@outlook.com', '123456', 1),
+(default, 'antônio', 'antonio@outlook.com', '123456', 2),
+(default, 'Renato', 'renato@outlook.com', '123456', 3),
+(default, 'Araújo', 'Araújo@outlook.com', '123456', 4),
+(default, 'Felps', 'Felps@outlook.com', '123456', 5);
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
+update usuario set fkPontuacoes = 8
+where idUsuario = 8;
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+select * from pontuacoes;
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
-
-insert into empresa (razao_social, cnpj) values ('Empresa 1', '00000000000000');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
+select nome from usuario;
+select * from pontuacoes join usuario on fkPontuacoes = idPontuacao where fkPontuacoes = 8;
+select nome, pontos_recebidos from pontuacoes join usuario on idPontuacao = fkPontuacoes order by pontos_recebidos desc;

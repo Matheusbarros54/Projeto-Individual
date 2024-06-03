@@ -16,7 +16,7 @@ function autenticar(req, res) {
 
                 if (resultadoAutenticar.length == 1) {
                     res.json({
-                        id: resultadoAutenticar[0].id,
+                        idUsuario: resultadoAutenticar[0].idUsuario,
                         email: resultadoAutenticar[0].email,
                         nome: resultadoAutenticar[0].nome,
                     });
@@ -39,7 +39,6 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var empresaId = req.body.empresaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {

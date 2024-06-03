@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="./../css/dashboards.css">
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
-    <script src="../js/script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -40,19 +41,809 @@
             <div class="btn-nav" onclick="AbrirModal()">
                     <h3>Quiz</h3>
             </div>
+            
+            <dialog id="quizModal">
+                <div class="modal page page1 first-page">
+                    <div class="foto-dialog">
+                        
+                    </div>
+                    <div class="mensagem">
+                        <h1 class="h1-dialog">Você sabe sobre <br> <span style="color: orange;">Dragon Ball?</span> </h1>
+                        <p class="p-dialog">teste seus conhecimentos e descubra se está pronto para enfrentar desafios dignos dos maiores
+                            guerreiros do universo!</p>
+                        <button class="botao" onclick="mostrarProximaPagina(2)">Escolher Dificuldade</button>
+                        <button class="botao2" onclick="FecharModal()">Cancelar</button>
+                    </div>
+                </div>
+                <div class="modal page page2" style="display: none; opacity: 0;">
+                    <div class="titulo-dificuldades">
+                        <h1>Escolha uma <span style="color: #ffaf00;">dificuldade</span></h1>
+                    </div>
+                    <div class="dificuldades">
+                    <div class="facil">
+                        <img src="../assets/images/mestre kame.png" onclick="iniciarQuiz(3, 'facil')">
+                        <h2 onclick="iniciarQuiz(3, 'facil')">Fácil</h2>
+                    </div>
+                    <div class="medio">
+                        <img src="../assets/images/gogeta.png" onclick="iniciarQuiz(14, 'medio')">
+                        <h2 onclick="iniciarQuiz(15, 'medio')">Médio</h2>
+                    </div>
+                    <div class="dificil">
+                        <img src="../assets/images/mui.png" onclick="iniciarQuiz(26, 'dificil')">
+                        <h2 onclick="iniciarQuiz(26, 'dificil')">Difícil</h2>
+                    </div>
+                </div>
+                </div>
+    
+                <div class="modal page page3" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quais foram os primeiros Androids a aparecer na saga dos Androids?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>17 e 19</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>19 e 20</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>17 e 18</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>10 e 11</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page4" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Qual é o nome verdadeiro de goku?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Kakaroto</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Son goku</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Son gohan</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Broly</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page5" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Em dragon ball super, quem é o vilão da saga do futuro?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Bills</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Majin Vegeta</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Cell</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Zamasu</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page6" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quem é o ser mais poderoso do Universo 7?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Whis</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Bills</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Goku</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Freeza</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page7" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Qual é o nome do planeta de origem dos Saiyajins?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Planeta Vegeta</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Planeta Namek</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Planeta Terra</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Planeta Yardrat</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page8" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Qual desses personagens não possui células Z?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Turles</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Bardock</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Cell</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Jeice</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page9" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quem foi o vencedor do torneio do poder?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Goku</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Android 17</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Jiren</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Freeza</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page10" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quem ensinou a técnica de teletransporte para Goku?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Mestre Kame</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Kami-Sama</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Yardrats</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Rei Yemma</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page11" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quem mata o Androide n° 20 no presente?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Cell</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Vegeta</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Piccolo</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Android 17</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page12" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Majin boo foi criado por qual mago?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Zarama</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Babidi</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Dabura</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Bibidi</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page13 ultimapage">
+                    <div class="foto-dialog">
+                        
+                    </div>
+                    <div class="mensagem">
+                        <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz 1</span> </h1>
+                        <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
+                        <span id="pontos_text">5</span>pts <br><br> Você está em um nível sayajin</p>
+            
+                        <button class="botao" onclick="FecharModal()">voltar</button>
+                        <button class="botao" onclick="reiniciarQuiz()">Reiniciar</button>
+                    </div>
+                </div>
+                <div class="modal page page14" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quem foi o primeiro vilão de dragon ball?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Majin boo</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Freeza</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Pilaf</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Tao pai pai</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page15" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Pilaf e sua turma apareceram em dragon ball super muito mais jovens, por quê?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Um erro de produção</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Uma mudança no anime</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Um acidente</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Um pedido das esferas do dragão</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page16" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quantos universos existem em dragon ball?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>10</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>8</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>14</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>12</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page17" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quantas sagas o dragon ball super tem?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>7</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>5</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>4</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>6</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page18" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quem derrotou kefla no mangá?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Freeza</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Android 17</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Goku</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Gohan</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page19" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Qual foi o Primeiro Universo a Ser Eliminado no Torneio do Poder?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Universo 2</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Universo 4</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Universo 9</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Universo 6</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page20" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quem foi o Primeiro do Universo 7 a ser eliminado do Torneio do Poder?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Piccolo</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Kuririn</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Android 18</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Mestre Kame</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page21" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>No filme dragon ball super: super hero, o Goku e Vegeta lutam pra ver quem é o mais forte. Em qual estagio eles lutam?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Ssj god</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Goku mui e vegeta ssj blue evolution</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Ssj blue</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Forma base</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page22" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Qual o personagem favorito do Akira Toriyama?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Piccolo</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Gohan</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Vegeta</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Goku</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page23" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Como goku black conseguiu realizar seu plano de acabar com os deuses na linha do tempo dele?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Criando uma linha do tempo onde ele seria o único Deus</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Pedindo para as super esferas do dragão que apagassem eles da existência</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Matando todos os kaioshins de todos os universos</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Enfrentando e matando todos os deuses</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page24 ultimapage">
+                    <div class="foto-dialog">
+                        
+                    </div>
+                    <div class="mensagem">
+                        <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz 1</span> </h1>
+                        <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text2">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
+                        <span id="pontos_text2">5</span>pts <br><br> Você está em um nível sayajin</p>
+            
+                        <button class="botao" onclick="FecharModal()">voltar</button>
+                        <button class="botao" onclick="reiniciarQuiz()">Reiniciar</button>
+                    </div>
+                </div>
+                <div class="modal page page25" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Qual é o nome do avô de granola?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Monaito</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Nail</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Dende</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Torombo</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page26" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quantos filmes de dragon ball tem?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>17</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>38</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>35</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>19</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page27" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>quem comeu mais sementes dos deuses em todo dragon ball?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Goku</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Piccolo</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Vegeta</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Yajirobe</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page28" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quem matou Zarbon e Dodoria em Namekusei?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Vegeta</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Forças Especiais Ginyu</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Freeza</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Gohan e Piccolo</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page29" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Zamasu era aprendiz de kaioshin do universo?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>5</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>2</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>10</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>4</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page30" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Quem reviveu o Freeza em Dragon ball super?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Sorbet e Tagoma</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Malaka e Abo</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Ginyu e Kado</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Apur e Yuzu</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page31" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Qual personagem nunca morreu em dragon ball?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Pilaf</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Garlick Júnior</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Rei Cutelo</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Bills</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page32" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>após os guerreiros z chegar ao planeta Namek eles são surpreendidos ao ver Vegeta lá. Ele queria pegar as esferas para:</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Se tornar o mais forte de todos para superar o Freeza e o derrotar</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Se tornar imortal para um dia superar o Freeza e o derrotar</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Nenhum, ele não sabia que tinha esferas no planeta Namek, mas ao descobrir ele vai atrás delas</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Ressuscitar todo o planeta Vegeta e governar eles, como deveria ser, e derrotar o Freeza</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page33" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Por qual motivo Goku foi enviado para a terra?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>Foi enviado pelos seus pais pois haviam suspeitas que o Freeza iria destruir o planeta Vegeta</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>Para conquistar o planeta, pois os Sayajins dominavam os planetas para vender</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>Depois de perder a luta contra Freeza, Bardock corre para mandar a nave de seu filho para a terra</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>Ele foi enviado para a Terra para destruí-la, mas bateu a cabeça e esqueceu de seu propósito</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page34" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>De quanto em quantos anos nasce um Super Sayajin Lendário?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>A cada 600 anos</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>A cada 3.000 anos</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>A cada 10.000 anos</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>A cada 1.000 anos</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page35" style="display: none; opacity: 0;">
+                    <div class="all-dialog">
+                        <div class="pergunta">
+                            <h1>Qual é a ordem de universos eliminados no Torneio do Poder?</h1>
+                        </div>
+                        <div class="alternativas_dupla">
+                            <div class="alternativa" onclick="verificarResposta(1, this)">
+                                <h1>9°, 10°, 3°, 12°, 6°, 5° e 11°</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(2, this)">
+                                <h1>10°, 2°, 9°, 6°, 4°, 3° e 11°</h1>
+                            </div>
+                        </div>
+                        <div class="alternativas_dupla2">
+                            <div class="alternativa" onclick="verificarResposta(3, this)">
+                                <h1>9°, 10°, 2°, 6°, 4°, 3° e 11°</h1>
+                            </div>
+                            <div class="alternativa" onclick="verificarResposta(4, this)">
+                                <h1>10°, 9°, 2°, 6°, 3°, 4° e 11°</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal page page36 ultimapage">
+                    <div class="foto-dialog">
+                        
+                    </div>
+                    <div class="mensagem">
+                        <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz 1</span> </h1>
+                        <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
+                        <span id="pontos_text">5</span>pts <br><br> Você está em um nível sayajin</p>
+            
+                        <button class="botao" onclick="FecharModal()">voltar</button>
+                        <button class="botao" onclick="reiniciarQuiz()">Reiniciar</button>
+                    </div>
+                </div>
+            
+    
+            
+            </dialog>
 
-            <div class="btn-nav">
+            <!-- <div class="btn-nav">
 
                 <h3>Minigames</h3>
 
-            </div>
+            </div> -->
 
             <div class="btn-nav">
                     <h3>Configurações</h3>
                 </a>
             </div>
 
-            <div class="btn-nav" onclick="limparSessao()">
+            <div class="btn-nav">
                 <h3>Sair</h3>
             </div>
 
@@ -63,18 +854,24 @@
                 <h1 class="titulo-dash">Painel de Controle</h1>
 
                 <div class="kpis">
-                    <div class="kpi1"><h2>Vezes que Realizou o <br> Quiz</h2> <h3>1 Vez</h3></div>
-                    <div class="kpi2"><h2>Quantidade de Pontos no Total</h2> <h3>11 Pts</h3></div>
-                    <div class="kpi3"><h2>Tempo Médio de Realização do Quiz</h2> <h3>6 Minutos</h3></div>
+                    <div class="kpi1"><h2>Vezes que Realizou os <br> Quizzes</h2> <h3 id="vezes_kpi">0</h3></div>
+                    <div class="kpi2"><h2>Quantidade de Pontos no Total</h2> <h3 id="pts_kpi">0 Pts</h3></div>
+                    <div class="kpi3"><h2>Quantidade Total de Acertos</h2> <h3 id="acertos_kpi">0</h3></div>
 
                 </div>
-                <div class="graficos">
+                <!-- <div class="graficos">
                     <h1 class="titulo-grafico">Quantidade de Pontos ao longo do Tempo</h1>
-                    <canvas id="myChart" width="1400" height="350"></canvas>
-                </div>
+                    <canvas id="myChart" width="780" height="230"></canvas>
+                </div> -->
                <div class="graficos-pizza">
-                <div class="grafico1"></div>
-                <div class="grafico2"></div>
+                <div class="grafico1"> 
+                    <div class="titulo-grafico1">Comparação de Acertos e Erros</div>
+                    <canvas id="myChart" width="250" height="200"></canvas>
+                
+                </div>
+                <div class="grafico2">
+                    <div class="titulo-grafico2">Pontos por Nível</div>
+                    <canvas id="myChart2" width="280" height="220"></canvas></div>
                </div>
             </div>
             
@@ -82,38 +879,38 @@
             </div>
             <div class="leaderboard">
                 <h1 class="titulo-h1">Placar de Líderes</h1>
-                <h3 class="titulo-h3">Pontuações</h3>
-                <h3 class="titulo-h3">Você</h3>
+                <h3 id="div_mensagem" class="titulo-h3">Pontuações</h3>
+                <!-- <h3 class="titulo-h3">Você</h3>
                 <div class="pontuacao_usuario">
                     <h2>2°</h2>
-                    <h2>Matheus</h2>
-                    <h2>11 Pts</h2>
-                </div>
+                    <h2 id="nome_user_atual">Matheus</h2>
+                    <h2 id="pts_user_atual">11 Pts</h2>
+                </div> -->
                 <h3 class="titulo-h3">Ranking</h3>
                 <div class="pontuacao_leaderboard">
                     <h2>1°</h2>
-                    <h2>Antônio</h2>
-                    <h2>13 Pts</h2>
+                    <h2 id="nome_primeiro">Antônio</h2>
+                    <h2 id="pts_primeiro">13 Pts</h2>
                 </div>
                 <div class="pontuacao_leaderboard">
                     <h2>2°</h2>
-                    <h2>Matheus</h2>
-                    <h2>11 Pts</h2>
+                    <h2 id="nome_segundo">Matheus</h2>
+                    <h2 id="pts_segundo">11 Pts</h2>
                 </div>
                 <div class="pontuacao_leaderboard">
                     <h2>3°</h2>
-                    <h2>Renato</h2>
-                    <h2>9 Pts</h2>
+                    <h2 id="nome_terceiro">Renato</h2>
+                    <h2 id="pts_terceiro">9 Pts</h2>
                 </div>
                 <div class="pontuacao_leaderboard">
                     <h2>4°</h2>
-                    <h2>Araújo</h2>
-                    <h2>8 Pts</h2>
+                    <h2 id="nome_quarto">Araújo</h2>
+                    <h2 id="pts_quarto">8 Pts</h2>
                 </div>
                 <div class="pontuacao_leaderboard">
                     <h2>5°</h2>
-                    <h2>Felps</h2>
-                    <h2>7 Pts</h2>
+                    <h2 id="nome_quinto">Felps</h2>
+                    <h2 id="pts_quinto">7 Pts</h2>
                 </div>
             </div>
 
@@ -131,284 +928,216 @@
 </html>
 
 <script>
-   const ctx = document.getElementById('myChart').getContext('2d');
+  var pontosRecebidos = 0; // Inicialize a variável fora do fetch
+  var vezesRealizadas = 0
+  var idUsuario = sessionStorage.ID_USUARIO
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO
+
+  function finalizarQuiz() {
+    // Captura os dados do quiz
+    var dadosQuiz = {
+        dificuldade: dificuldade, // Variável de dificuldade que você já definiu
+        acertos: acertos,         // Variável de acertos que você já definiu
+        erros: erros,             // Variável de erros que você já definiu
+        pontos: pontuacao         // Variável de pontuação que você já definiu
+    };
+
+    // Envia os dados ao servidor
+    fetch(`/pontuacoes/insert/${idUsuario}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosQuiz)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao enviar os resultados do quiz');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Resultados do quiz enviados com sucesso:', data);
+        // Aqui você pode redirecionar o usuário, mostrar uma mensagem de sucesso, etc.
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+    });
+}
+
+var acertos = 0
+var erros = 0
+function obterPontos() {
+    fetch(`/pontuacoes/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+               var pontosRecebidos = resposta[0].total_pontos; 
+                var vezesRealizadas = resposta[0].quantidade// Atribua os dados à variável fora do escopo do fetch
+                var qtd_acertos = resposta[0].qtd_acertos
+                var qtd_erros = resposta[0].qtd_erros
+                console.log(`${pontosRecebidos}`)
+                // pts_user_atual.innerHTML = `${pontosRecebidos} Pts`
+                // nome_user_atual.innerHTML = `${sessionStorage.NOME_USUARIO}`
+                pts_kpi.innerHTML = `${pontosRecebidos} Pts`
+                vezes_kpi.innerHTML = `${vezesRealizadas} Vezes`
+                acertos_kpi.innerHTML = `${qtd_acertos} Acertos`
+                acertos = qtd_acertos
+                erros = qtd_erros
+                plotarGrafico()
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green'],
+    });
+    
+    
+}
+var pontosFacil = 0
+var pontosMedio = 0
+var pontosDificil = 0
+function obterPontosPorNivel() {
+    fetch(`/pontuacoes/nivel/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+               pontosDificil = resposta[2].acertos_totais; 
+               pontosFacil = resposta[1].acertos_totais; 
+               pontosMedio = resposta[0].acertos_totais; 
+                plotarGrafico2()
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        
+    });
+    
+    
+}
+
+function PontosGerais() {
+    fetch(`/pontuacoes/tempo-real`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+                var pontosPrimeiro = resposta[4].total_pontos; 
+                var pontosSegundo = resposta[3].total_pontos;
+                var pontosTerceiro = resposta[2].total_pontos; 
+                var pontosQuarto = resposta[1].total_pontos; 
+                var pontosQuinto = resposta[0].total_pontos; 
+                var nomePrimeiro = resposta[4].nome;
+                var nomeSegundo = resposta[3].nome;
+                var nomeTerceiro = resposta[2].nome;
+                var nomeQuarto = resposta[1].nome;
+                var nomeQuinto = resposta[0].nome;
+
+                console.log(`${resposta[4].pontos_recebidos}`)
+                nome_primeiro.innerHTML = `${nomePrimeiro}`
+                nome_segundo.innerHTML = `${nomeSegundo}`
+                nome_terceiro.innerHTML = `${nomeTerceiro}`
+                nome_quarto.innerHTML = `${nomeQuarto}`
+                nome_quinto.innerHTML = `${nomeQuinto}`
+                pts_primeiro.innerHTML = `${pontosPrimeiro} Pts`
+                pts_segundo.innerHTML = `${pontosSegundo} Pts`
+                pts_terceiro.innerHTML = `${pontosTerceiro} Pts`
+                pts_quarto.innerHTML = `${pontosQuarto} Pts`
+                pts_quinto.innerHTML = `${pontosQuinto} Pts`
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+// Atualiza os pontos gerais a cada 10 segundos (10000 milissegundos)
+window.onload = function() {
+    PontosGerais();
+    obterPontos();
+    obterPontosPorNivel();
+
+    // Define os intervalos de atualização
+    setInterval(PontosGerais, 5000); // Atualiza a função PontosGerais a cada 1000 milissegundos (1 segundo)
+    setInterval(obterPontos, 5000); // Atualiza a função obterPontos a cada 1000 milissegundos (1 segundo)
+};
+
+var myPieChart;
+        var myBarChart;
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        Chart.defaults.color = "#fff";
+
+        function plotarGrafico() {
+            var data = {
+                labels: [`Acertos: ${acertos}`, `Erros: ${erros}`],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderColor: 'rgba(255, 152, 10, 1)', // Cor da linha
-                    backgroundColor: 'rgba(255, 152, 10, 0.2)', // Cor de fundo sob a linha
-                    borderWidth: 2, // Largura da linha
-                    pointBackgroundColor: 'rgba(255, 152, 10, 1)', // Cor dos pontos
-                    pointBorderColor: '#FFF500' // Cor da borda dos pontos
+                    data: [acertos, erros],
+                    backgroundColor: ['blue', 'red']
                 }]
-            },
-            options: {
+            };
+
+            var options = {
+                responsive: false,
+                maintainAspectRatio: false
+            };
+
+            if (myPieChart) {
+                myPieChart.data = data;
+                myPieChart.update();
+            } else {
+                myPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: data,
+                    options: options
+                });
+            }
+        }
+
+        function plotarGrafico2() {
+            var data2 = {
+                labels: ['Fácil', 'Médio', 'Difícil'],
+                datasets: [{
+                    label: 'Pontos',
+                    data: [pontosFacil, pontosMedio, pontosDificil],
+                    backgroundColor: 'orange',
+                    borderColor: 'white',
+                    borderWidth: 1
+                }]
+            };
+
+            var options2 = {
+                responsive: false,
+                maintainAspectRatio: false,
                 scales: {
                     y: {
-                        beginAtZero: true,
-                        ticks: {
-                            color: 'rgba(255, 255, 255, 1)' // Cor dos rótulos verticais
-                        },
-                        grid: {
-                            color: 'rgba(255, 152, 10, 0.2)' // Cor das linhas de grade
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: 'rgba(255, 255, 255, 1)' // Cor dos rótulos horizontais
-                        },
-                        grid: {
-                            color: 'rgba(255, 152, 10, 0.2)' // Cor das linhas de grade
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: 'rgba(255, 152, 10, 1)' // Cor dos rótulos da legenda
-                        }
+                        beginAtZero: true
                     }
                 }
-            }
-        });
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+            };
 
-    let proximaAtualizacao;
-
-    window.onload = exibirAquariosDoUsuario();
-
-    function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            `
-
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-            obterDadosGrafico(item.id)
-        });
-
-        if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].id)
-        }
-    }
-
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
-    }
-
-    function exibirAquario(idAquario) {
-        let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
-
-        for (i = 0; i < todosOsGraficos.length; i++) {
-            // exibindo - ou não - o gráfico
-            if (todosOsGraficos[i].id != idAquario) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-                if (elementoAtual.classList.contains("display-block")) {
-                    elementoAtual.classList.remove("display-block")
-                }
-                elementoAtual.classList.add("display-none")
-
-                // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-                if (btnAtual.classList.contains("btn-pink")) {
-                    btnAtual.classList.remove("btn-pink")
-                }
-                btnAtual.classList.add("btn-white")
-            }
-        }
-
-        // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
-        graficoExibir.classList.remove("display-none")
-        graficoExibir.classList.add("display-block")
-
-        // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-        btnExibir.classList.remove("btn-white")
-        btnExibir.classList.add("btn-pink")
-    }
-
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idAquario) {
-
-        alterarTitulo(idAquario)
-
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
-
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-
-                    plotarGrafico(resposta, idAquario);
-
-                });
+            if (myBarChart) {
+                myBarChart.data = data2;
+                myBarChart.update();
             } else {
-                console.error('Nenhum dado encontrado ou erro na API');
+                myBarChart = new Chart(ctx2, {
+                    type: 'bar',
+                    data: data2,
+                    options: options2
+                });
             }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
-
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idAquario) {
-
-        console.log('iniciando plotagem do gráfico...');
-
-        // Criando estrutura para plotar gráfico - labels
-        let labels = [];
-
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Umidade',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            },
-            {
-                label: 'Temperatura',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(199, 52, 52)',
-                tension: 0.1
-            }]
-        };
-
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
         }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'line',
-            data: dados,
-        };
-
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
-            config
-        );
-
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-    }
-
-
-    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idAquario, dados, myChart) {
-
-
-
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    obterdados(idAquario);
-                    // alertar(novoRegistro, idAquario);
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
-
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-                    avisoCaptura.innerHTML = ""
-
-
-                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-                        myChart.update();
-                    }
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-    }
 </script>
+<script src="../js/script.js"></script>
+
