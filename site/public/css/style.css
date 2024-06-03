@@ -48,10 +48,10 @@ a {
 header .conteudo .lista {
     list-style-type: none;
     text-shadow:
-        -3px -3px 0 #000000,
-        3px -3px 0 #000000,
-        -3px 3px 0 #000000,
-        3px 3px 0#000000;
+        -2px -2px 0 #000000,
+        2px -2px 0 #000000,
+        -2px 2px 0 #000000,
+        2px 2px 0#000000;
     background-image: url(../assets/images/background.png);
     background-position: center -7px;
     background-size: cover;
@@ -61,6 +61,10 @@ header .conteudo .lista {
     border-radius: 15px;
     font-size: 1.25em;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+header .conteudo .lista:hover {
+    transform: scale(1.2);
 }
 
 header .conteudo .logo {
@@ -190,7 +194,9 @@ header .conteudo li img {
 .paragrafo {
     background-color: #141414;
     border-radius: 9px;
-    padding: 20px;
+    padding: 0px 20px;
+    padding-top: 5px;
+    padding-bottom: 50px;
     border: solid 3px #FF7F00;
     font-weight: 100;
     font-size: 1.2em;
@@ -201,7 +207,9 @@ header .conteudo li img {
 .paragrafo2 {
     background-color: #141414;
     border-radius: 9px;
-    padding: 20px;
+    padding: 0px 20px;
+    padding-top: 5px;
+    padding-bottom: 50px;
     border: solid 3px #FF7F00;
     font-weight: 100;
     font-size: 1em;
@@ -297,7 +305,7 @@ header .conteudo li img {
     align-items: center;
     flex-direction: column;
     background-color: #1C1C1C;
-    padding: 0px 5vw;
+    padding: 0px 10vw;
     padding-top: 40px;
     height: 500px;
 }
@@ -363,28 +371,38 @@ header .conteudo li img {
     border: solid 3px #FF7F00;
     display: flex;
     flex-direction: row;
+    transition: all 0.3s ease; 
 
+}
+.box_slider .box1:hover,
+.box_slider .box2:hover,
+.box_slider .box3:hover,
+.box_slider .box4:hover,
+.box_slider .box5:hover,
+.box_slider .box6:hover {
+    transform: scale(1.1);
 }
 
 .box_slider .esquerda-texto {
     display: flex;
     flex-direction: column;
-    padding-top: 40px;
+    justify-content: center;
     align-items: center;
     width: 50%;
     height: 100%;
 }
 
 .esquerda-texto h1 {
-    background-color: #FF7F00;
+    background: linear-gradient(to right, #1f1b18 0%, #3a2e14 100%);
     font-weight: 100;
     text-shadow:
-        -3px -3px 0 #000000,
-        3px -3px 0 #000000,
-        -3px 3px 0 #000000,
-        3px 3px 0#000000;
+        -2px -2px 0 #000000,
+        2px -2px 0 #000000,
+        -2px 2px 0 #000000,
+        2px 2px 0#000000;
     padding: 6px 15px;
-    border-radius: 15px;
+    border-radius: 7px;
+    border: solid 2px #FF7F00;
 }
 
 .esquerda-texto p {
@@ -401,6 +419,7 @@ header .conteudo li img {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    
 }
 
 .box2 .direita-imagem {
@@ -581,6 +600,12 @@ dialog .mensagem {
         -2px 2px 0 #000000,
         2px 2px 0#000000;
 
+}
+.botao:hover {
+    transform: scale(1.1);
+}
+.botao2:hover {
+    transform: scale(1.1);
 }
 
 .modal .page {
@@ -824,4 +849,106 @@ footer {
 .copyright h1 {
     font-weight: 100;
     font-size: 18px;
+}
+
+/* MODAl PERSONAGENS */
+
+.dialog-personagem {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.esquerda-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    padding: 0px 40px;
+}
+
+.esquerda-dialog .poder {
+background-color: #1C1C1C;
+border: solid 3px #FF7F00;
+border-radius: 15px;
+padding: 8px 75px;
+}
+.esquerda-dialog .poder h1 {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 0;
+    }
+    .esquerda-dialog .descricao {
+        background-color: #1C1C1C;
+        border: solid 3px #FF7F00;
+        border-radius: 15px;
+        padding: 8px 15px;
+        }
+        .esquerda-dialog .descricao p {
+            font-size: 1.2em;
+            margin: 0;
+            font-weight: 300;
+            line-height: 1.8;
+            }
+        .esquerda-dialog .nome {
+            background-color: #1C1C1C;
+            border: solid 3px #FF7F00;
+            border-radius: 15px;
+            padding: 8px 75px;
+            }
+            .esquerda-dialog .nome h1 {
+                font-weight: 300;
+                font-size: 2em;
+                margin: 0;
+                }
+                
+.imagem-dialog {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/images/Goku.jpeg);
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imagem-dialog2 {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/images/vegeta.jpeg);
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imagem-dialog3 {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/images/gohan.jpeg);
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imagem-dialog4 {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/images/freeza.jpeg);
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imagem-dialog5 {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/images/jiren.jpeg);
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imagem-dialog6 {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/images/goku_black.jpeg);
+    background-position: 0px -105px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

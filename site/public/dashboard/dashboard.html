@@ -310,7 +310,7 @@
                         
                     </div>
                     <div class="mensagem">
-                        <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz 1</span> </h1>
+                        <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz</span> </h1>
                         <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
                         <span id="pontos_text">5</span>pts <br><br> Você está em um nível sayajin</p>
             
@@ -535,7 +535,7 @@
                                 <h1>Criando uma linha do tempo onde ele seria o único Deus</h1>
                             </div>
                             <div class="alternativa" onclick="verificarResposta(2, this)">
-                                <h1>Pedindo para as super esferas do dragão que apagassem eles da existência</h1>
+                                <h1>Desejando para as super esferas do dragão que apagassem eles</h1>
                             </div>
                         </div>
                         <div class="alternativas_dupla2">
@@ -553,9 +553,9 @@
                         
                     </div>
                     <div class="mensagem">
-                        <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz 1</span> </h1>
-                        <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text2">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
-                        <span id="pontos_text2">5</span>pts <br><br> Você está em um nível sayajin</p>
+                        <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz</span> </h1>
+                        <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
+                        <span id="pontos_text">5</span>pts <br><br> Você está em um nível sayajin</p>
             
                         <button class="botao" onclick="FecharModal()">voltar</button>
                         <button class="botao" onclick="reiniciarQuiz()">Reiniciar</button>
@@ -725,11 +725,11 @@
                 <div class="modal page page32" style="display: none; opacity: 0;">
                     <div class="all-dialog">
                         <div class="pergunta">
-                            <h1>após os guerreiros z chegar ao planeta Namek eles são surpreendidos ao ver Vegeta lá. Ele queria pegar as esferas para:</h1>
+                            <h1>Por que Vegeta queria as esferas de Namekusei?</h1>
                         </div>
                         <div class="alternativas_dupla">
                             <div class="alternativa" onclick="verificarResposta(1, this)">
-                                <h1>Se tornar o mais forte de todos para superar o Freeza e o derrotar</h1>
+                                <h1>Superar todos do universo</h1>
                             </div>
                             <div class="alternativa" onclick="verificarResposta(2, this)">
                                 <h1>Se tornar imortal para um dia superar o Freeza e o derrotar</h1>
@@ -737,10 +737,10 @@
                         </div>
                         <div class="alternativas_dupla2">
                             <div class="alternativa" onclick="verificarResposta(3, this)">
-                                <h1>Nenhum, ele não sabia que tinha esferas no planeta Namek, mas ao descobrir ele vai atrás delas</h1>
+                                <h1>Ele não sabia que tinha esferas lá</h1>
                             </div>
                             <div class="alternativa" onclick="verificarResposta(4, this)">
-                                <h1>Ressuscitar todo o planeta Vegeta e governar eles, como deveria ser, e derrotar o Freeza</h1>
+                                <h1>Ressuscitar todo o planeta Vegeta e governar eles</h1>
                             </div>
                         </div>
                     </div>
@@ -752,18 +752,18 @@
                         </div>
                         <div class="alternativas_dupla">
                             <div class="alternativa" onclick="verificarResposta(1, this)">
-                                <h1>Foi enviado pelos seus pais pois haviam suspeitas que o Freeza iria destruir o planeta Vegeta</h1>
+                                <h1>Pois freeza iria destruir o planeta Vegeta</h1>
                             </div>
                             <div class="alternativa" onclick="verificarResposta(2, this)">
-                                <h1>Para conquistar o planeta, pois os Sayajins dominavam os planetas para vender</h1>
+                                <h1>Para conquistar o planeta</h1>
                             </div>
                         </div>
                         <div class="alternativas_dupla2">
                             <div class="alternativa" onclick="verificarResposta(3, this)">
-                                <h1>Depois de perder a luta contra Freeza, Bardock corre para mandar a nave de seu filho para a terra</h1>
+                                <h1>Pois seu pai perdeu em uma luta contra Raditz</h1>
                             </div>
                             <div class="alternativa" onclick="verificarResposta(4, this)">
-                                <h1>Ele foi enviado para a Terra para destruí-la, mas bateu a cabeça e esqueceu de seu propósito</h1>
+                                <h1>Para destruir a Terra</h1>
                             </div>
                         </div>
                     </div>
@@ -819,7 +819,7 @@
                         
                     </div>
                     <div class="mensagem">
-                        <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz 1</span> </h1>
+                        <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz</span> </h1>
                         <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
                         <span id="pontos_text">5</span>pts <br><br> Você está em um nível sayajin</p>
             
@@ -935,6 +935,8 @@
 
   function finalizarQuiz() {
     // Captura os dados do quiz
+    document.getElementById('acertos_text').innerHTML = acertos;
+    document.getElementById('pontos_text').innerHTML = pontuacao;
     var dadosQuiz = {
         dificuldade: dificuldade, // Variável de dificuldade que você já definiu
         acertos: acertos,         // Variável de acertos que você já definiu

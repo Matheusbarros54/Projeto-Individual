@@ -107,8 +107,7 @@ function verificarResposta(numero, divClicada) {
         respostaSelecionada = false;
     }, 1500);
 
-    document.getElementById('acertos_text').innerHTML = acertos;
-    document.getElementById('pontos_text').innerHTML = pontuacao;
+    
 }
 
 function mostrarProximaPagina(paginaNumero) {

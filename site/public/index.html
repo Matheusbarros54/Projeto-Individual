@@ -13,10 +13,10 @@
 <body>
     <header>
         <div class="conteudo">
-            <li class="lista">Personagens</li>
-            <li class="lista">Sobre Mim</li>
+            <li class="lista"><a href="#personagens">Personagens</a></li>
+            <li class="lista"><a href="#sobre-mim">Sobre Mim</a></li>
             <li class="logo"><img src="assets/images/logo.png"></li>
-            <li class="lista">Minigame</li>
+            <li class="lista"><a href="#akira">Akira</a></li>
             <a href="cadastro.html"><li class="lista">Cadastrar</li></a>
         </div>
     </header>
@@ -55,81 +55,142 @@
 
         <div class="texto2">
             <div class="titulo2">
-                <h3><img width="40" src="assets/images/esfera2.png" alt=""> Dragon Ball</h3>
+                <h3><img width="40" src="assets/images/esfera2.png" alt=""> Esferas do Dragão</h3>
             </div>
             <div class="paragrafo2">
-                <p>Dragon Ball é uma série de anime e mangá criada por Akira Toriyama. A história segue as aventuras de
-                    Son Goku, um guerreiro com poderes sobre-humanos, enquanto ele busca as Esferas do Dragão, artefatos
-                    mágicos que concedem desejos. Combinando ação intensa, batalhas épicas e temas de amizade e
-                    superação, Dragon Ball se tornou uma das franquias mais populares e influentes da cultura pop.</p>
+                <p>As Esferas do Dragão (Dragon Ball) são um conjunto de sete esferas místicas que, quando reunidas, invocam Shenlong, um poderoso dragão capaz de realizar um desejo para aquele que as coletou. Essas esferas, criadas pelos Namekuseijins, têm o poder de conceder qualquer desejo, dentro de certas limitações, e se espalharam por vários planetas, incluindo a Terra, desencadeando aventuras emocionantes em busca de seu poder.</p>
             </div>
         </div>
         <div class="texto2">
             <div class="titulo2">
-                <h3><img width="40" src="assets/images/esfera2.png" alt=""> Dragon Ball</h3>
+                <h3><img width="40" src="assets/images/esfera2.png" alt="">Guerreiros Z</h3>
             </div>
             <div class="paragrafo2">
-                <p>Dragon Ball é uma série de anime e mangá criada por Akira Toriyama. A história segue as aventuras de
-                    Son Goku, um guerreiro com poderes sobre-humanos, enquanto ele busca as Esferas do Dragão, artefatos
-                    mágicos que concedem desejos. Combinando ação intensa, batalhas épicas e temas de amizade e
-                    superação, Dragon Ball se tornou uma das franquias mais populares e influentes da cultura pop.</p>
+                <p>Os Guerreiros Z são um grupo de lutadores poderosos do universo Dragon Ball, liderados por Goku. Composto por guerreiros como Vegeta, Piccolo, Gohan e outros, eles se unem para proteger a Terra de ameaças intergalácticas. Juntos, enfrentam inimigos formidáveis, treinam arduamente para alcançar novos níveis de poder e defendem o planeta com coragem e determinação.</p>
             </div>
         </div>
     </section>
-    <section class="section4">
+    <section id="personagens" class="section4">
         <h1 class="titulo_secao4">Guerreiros Z</h1>
         <div class="box_slider">
-            <i id="left" class="fa-solid fa-angle-left"></i>
-            <div class="box1">
+            <div onclick="abrirModal1()" class="box1">
                 <div class="esquerda-texto">
                     <h1>Goku</h1>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et eius fugit </p>
+                    <p> </p>
                 </div>
                 <div class="direita-imagem"></div>
             </div>
-            <div class="box2">
+            <dialog id="personagem1">
+                <div class="dialog-personagem">
+
+                
+                <div class="esquerda-dialog">
+                    <div class="nome"><h1>Goku</h1></div>
+                    <div class="descricao"><p>Goku é um guerreiro lendário, conhecido por sua incrível determinação e sede constante de desafios. Criado na Terra, ele é amado por sua bondade e compaixão, mas sua verdadeira paixão reside na luta e no aprimoramento de suas habilidades. Dotado de um coração puro e um espírito indomável, Goku é uma inspiração para todos que o conhecem, sempre pronto para proteger seus entes queridos e o universo de qualquer ameaça que se apresente.</p>
+                    </div>
+                    <div class="poder"> <h1>Poder de Luta: 16 Septilhões</h1></div>
+            </div>
+                <div class="imagem-dialog"></div>
+            </div>
+            </dialog>
+            <div onclick="abrirModal2()" class="box2">
                 <div class="esquerda-texto">
                     <h1>Vegeta</h1>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et eius fugit </p>
                 </div>
                 <div class="direita-imagem"></div>
             </div>
-            <div class="box3">
+            <dialog id="personagem2">
+                <div class="dialog-personagem">
+
+                <div class="esquerda-dialog">
+                    <div class="nome"><h1>Vegeta</h1></div>
+                    <div class="descricao"><p>Vegeta, o Príncipe dos Saiyajins, é um guerreiro feroz e orgulhoso, cujo poder e determinação são lendários. Originário do planeta Vegeta, ele foi criado para ser um conquistador, mas ao longo de sua jornada, encontrou redenção e se tornou um protetor dedicado da Terra. Apesar de sua natureza às vezes arrogante e desconfiada, Vegeta é um aliado leal e um lutador incansável, disposto a sacrificar tudo para proteger sua família e seu lar.</p>
+                    </div>
+                    <div class="poder"> <h1>Poder de Luta: 16.5 Septilhões</h1></div>
+            </div>
+                <div class="imagem-dialog2"></div>
+            </div>
+            </dialog>
+            <div onclick="abrirModal3()" class="box3">
                 <div class="esquerda-texto">
                     <h1>Gohan</h1>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et eius fugit </p>
                 </div>
                 <div class="direita-imagem"></div>
             </div>
-            <i id="right" class="fa-solid fa-angle-right"></i>
+            <dialog id="personagem3">
+                <div class="dialog-personagem">
+
+                <div class="esquerda-dialog">
+                    <div class="nome"><h1>Gohan</h1></div>
+                    <div class="descricao"><p>Gohan, filho de Goku, é um guerreiro excepcionalmente talentoso, cujo poder e bondade são igualmente notáveis. Criado na Terra, ele cresceu em um ambiente de amor e cuidado, mas seu destino como defensor do universo foi selado desde cedo. Embora muitas vezes prefira a paz à batalha, Gohan demonstrou repetidamente coragem e determinação em enfrentar qualquer ameaça que surja. </p>
+                    </div>
+                    <div class="poder"> <h1>Poder de Luta: 18 Septilhões</h1></div>
+            </div>
+                <div class="imagem-dialog3"></div>
+            </div>
+            </dialog>
         </div>
     </section>
     <section class="section4">
         <h1 class="titulo_secao4">Vilões</h1>
         <div class="box_slider">
-            <i id="left" class="fa-solid fa-angle-left"></i>
-            <div class="box4">
+            <div onclick="abrirModal4()" class="box4">
                 <div class="esquerda-texto">
                     <h1>Freeza</h1>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et eius fugit </p>
                 </div>
                 <div class="direita-imagem"></div>
             </div>
-            <div class="box5">
+            <dialog id="personagem4">
+                <div class="dialog-personagem">
+
+                <div class="esquerda-dialog">
+                    <div class="nome"><h1>Freeza</h1></div>
+                    <div class="descricao"><p>Freeza é um tirano intergaláctico cruel e impiedoso, cuja sede de poder e destruição não conhece limites. Como imperador do Império Freeza, ele subjuga planetas e raças inteiras com sua crueldade e força esmagadora. Sua forma final, com sua aparência assustadora e aura maligna, inspira medo e terror em todos que cruzam seu caminho. Sem piedade e sem remorso, Freeza é uma ameaça constante ao universo, cuja presença representa um perigo iminente para todos os que se opõem a ele.
+                    </p>
+                    </div>
+                    <div class="poder"> <h1>Poder de Luta: 22 Septilhões</h1></div>
+            </div>
+                <div class="imagem-dialog4"></div>
+            </div>
+            </dialog>
+            <div onclick="abrirModal5()" class="box5">
                 <div class="esquerda-texto">
                     <h1>Jiren</h1>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et eius fugit </p>
                 </div>
                 <div class="direita-imagem"></div>
             </div>
-            <div class="box6">
+            <dialog id="personagem5">
+                <div class="dialog-personagem">
+
+                <div class="esquerda-dialog">
+                    <div class="nome"><h1>Jiren</h1></div>
+                    <div class="descricao"><p>Jiren é um guerreiro misterioso e formidável, cujo poder é lendário entre os universos. Como membro orgulhoso do Orgulho do Trovão, ele é conhecido por sua força inigualável e seu compromisso inabalável com a justiça. Sua determinação implacável e seu código de honra o tornam um adversário formidável em qualquer batalha. Apesar de sua aparência calma e serena, Jiren é uma força a ser temida, capaz de derrotar seus inimigos com uma facilidade impressionante. 
+                    </p>
+                    </div>
+                    <div class="poder"> <h1>Poder de Luta: 14 Septilhões</h1></div>
+            </div>
+                <div class="imagem-dialog5"></div>
+            </div>
+            </dialog>
+            <div onclick="abrirModal6()" class="box6">
                 <div class="esquerda-texto">
                     <h1>Goku Black</h1>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et eius fugit </p>
                 </div>
                 <div class="direita-imagem"></div>
             </div>
-            <i id="right" class="fa-solid fa-angle-right"></i>
+            <dialog id="personagem6">
+                <div class="dialog-personagem">
+
+                <div class="esquerda-dialog">
+                    <div class="nome"><h1>Goku Black</h1></div>
+                    <div class="descricao"><p>Goku Black é uma versão distorcida e maligna de Goku, originada de uma linha do tempo alternativa. Possuído pelo deus Zamasu, ele se torna um ser de poder inimaginável, determinado a eliminar toda a vida para alcançar seu ideal de justiça divina. Sua aparência sinistra e aura sombria inspiram medo e desespero em todos que o enfrentam. Com sua crueldade implacável e habilidades de combate excepcionais, Goku Black é uma força formidável que busca impor sua vontade sobre o universo, espalhando a escuridão por onde passa. 
+                    </p>
+                    </div>
+                    <div class="poder"> <h1>Poder de Luta: 200 Sextilhões</h1></div>
+            </div>
+                <div class="imagem-dialog6"></div>
+            </div>
+            </dialog>
         </div>
 
         
@@ -139,61 +200,49 @@
         <div class="foto4"></div>
         <div class="texto">
             <div class="titulo">
-                <h3><img src="assets/images/esfera2.png" alt=""> Dragon Ball</h3>
+                <h3><img src="assets/images/esfera2.png" alt="">Android 17</h3>
             </div>
             <div class="paragrafo">
-                <p>Dragon Ball é uma série de anime e mangá criada por Akira Toriyama. A história segue as aventuras de
-                    Son Goku, um guerreiro com poderes sobre-humanos, enquanto ele busca as Esferas do Dragão, artefatos
-                    mágicos que concedem desejos. Combinando ação intensa, batalhas épicas e temas de amizade e
-                    superação, Dragon Ball se tornou uma das franquias mais populares e influentes da cultura pop.</p>
+                <p>No universo de Dragon Ball, Android 17, após sua redenção, tornou-se guarda florestal, protegendo a vida selvagem em uma ilha. Este papel alinha-se com o ODS 15 da ONU, focado na preservação dos ecossistemas terrestres e na sustentabilidade do planeta. Cuidando da fauna e flora, 17 exemplifica a importância da convivência harmoniosa com a natureza. Sua história inspira ações em prol do meio ambiente e da biodiversidade.</p>
             </div>
             </section>
             <section class="section5">
 
                 <div class="texto">
                     <div class="titulo">
-                        <h3><img src="assets/images/esfera2.png" alt=""> Dragon Ball</h3>
+                        <h3><img src="assets/images/esfera2.png" alt=""> Sayajins</h3>
                     </div>
                     <div class="paragrafo">
-                        <p>Dragon Ball é uma série de anime e mangá criada por Akira Toriyama. A história segue as aventuras de
-                            Son Goku, um guerreiro com poderes sobre-humanos, enquanto ele busca as Esferas do Dragão, artefatos
-                            mágicos que concedem desejos. Combinando ação intensa, batalhas épicas e temas de amizade e
-                            superação, Dragon Ball se tornou uma das franquias mais populares e influentes da cultura pop.</p>
+                        <p>Os Saiyajins são uma raça de guerreiros do universo Dragon Ball, conhecidos por sua força e habilidades de combate. Originários do planeta Vegeta, possuem várias transformações que mudam a cor do cabelo, como o icônico Super Saiyajin, com cabelo dourado, e outras como Super Saiyajin Deus, com cabelo vermelho, e Super Saiyajin Blue, com cabelo azul. Essas transformações representam níveis crescentes de poder e são elementos fundamentais da série.</p>
                     </div>
                 </div>
                 <div class="foto3"></div>
             </section>
 
             <section class="section7">  
-                <p class="paragrafo7">Cadastre-se e veja o mundo <br> de possibilidades que te <br> espera</p>
+                <p class="paragrafo7">Cadastre-se e para responder <br> a um quiz sobre <br> dragon ball  e ter acesso a <br> métricas exclusivas! </p>
                 <button class="botao">Cadastrar</button>
     </section>
-            <section class="section8">
+            <section id="sobre-mim" class="section8">
 
                 <div class="texto">
                     <div class="titulo">
-                        <h3><img src="assets/images/esfera2.png" alt=""> Dragon Ball</h3>
+                        <h3><img src="assets/images/esfera2.png" alt="">Matheus</h3>
                     </div>
                     <div class="paragrafo">
-                        <p>Dragon Ball é uma série de anime e mangá criada por Akira Toriyama. A história segue as aventuras de
-                            Son Goku, um guerreiro com poderes sobre-humanos, enquanto ele busca as Esferas do Dragão, artefatos
-                            mágicos que concedem desejos. Combinando ação intensa, batalhas épicas e temas de amizade e
-                            superação, Dragon Ball se tornou uma das franquias mais populares e influentes da cultura pop.</p>
+                        <p>Desde criança, Dragon Ball me encanta. Acompanhar as aventuras de Goku e seus amigos é uma fonte de alegria e inspiração constante. Ao longo dos anos, minha admiração pela série só cresceu. Assistir a cada episódio ou reler um capítulo do mangá me traz uma sensação de nostalgia e renova minha admiração pela saga. Dragon Ball não é apenas uma série para mim; é uma parte essencial da minha vida, inspirando-me com seus valores de coragem, determinação e amizade.</p>
                     </div>
                 </div>
                 <div class="foto5"></div>
             </section>
-            <section class="section9">
+            <section id="akira" class="section9">
                 <div class="foto6"></div>
                 <div class="texto">
                     <div class="titulo">
-                        <h3><img src="assets/images/esfera2.png" alt=""> Dragon Ball</h3>
+                        <h3><img src="assets/images/esfera2.png" alt="">Akira Toriyama</h3>
                     </div>
                     <div class="paragrafo">
-                        <p>Dragon Ball é uma série de anime e mangá criada por Akira Toriyama. A história segue as aventuras de
-                            Son Goku, um guerreiro com poderes sobre-humanos, enquanto ele busca as Esferas do Dragão, artefatos
-                            mágicos que concedem desejos. Combinando ação intensa, batalhas épicas e temas de amizade e
-                            superação, Dragon Ball se tornou uma das franquias mais populares e influentes da cultura pop.</p>
+                        <p>Akira Toriyama foi um mangaká japonês conhecido por criar Dragon Ball, uma das séries de mangá e anime mais famosas do mundo. Sua narrativa habilidosa e personagens cativantes conquistaram milhões de fãs globalmente. Além de Dragon Ball, suas outras obras de sucesso incluem Dr. Slump e Jaco the Galactic Patrolman. Em homenagem a sua genialidade criativa e impacto duradouro na cultura pop, agradeço a Toriyama por suas inúmeras contribuições para o mundo do entretenimento.</p>
                     </div>
                     </section>
 
@@ -218,5 +267,24 @@
 </body>
 
 </html>
-
+<script>
+function abrirModal1() {
+  personagem1.showModal();
+}
+function abrirModal2() {
+  personagem2.showModal();
+}
+function abrirModal3() {
+  personagem3.showModal();
+}
+function abrirModal4() {
+  personagem4.showModal();
+}
+function abrirModal5() {
+  personagem5.showModal();
+}
+function abrirModal6() {
+  personagem6.showModal();
+}
+</script>
 <script src="js/script.js"></script>

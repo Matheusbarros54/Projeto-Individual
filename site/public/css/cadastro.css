@@ -34,6 +34,7 @@ header .conteudo .lista{
                 padding: 5px 8px;
                 border-radius: 15px;
                 font-size: 1.25em;
+                cursor: pointer;
     }
 
 header .conteudo .logo {
