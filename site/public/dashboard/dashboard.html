@@ -61,16 +61,16 @@
                     </div>
                     <div class="dificuldades">
                     <div class="facil">
-                        <img src="../assets/images/mestre kame.png" onclick="iniciarQuiz(3, 'facil')">
-                        <h2 onclick="iniciarQuiz(3, 'facil')">Fácil</h2>
+                        <img src="../assets/images/mestre kame.png" onclick="iniciarQuiz(3, 1)">
+                        <h2 onclick="iniciarQuiz(3, 1)">Fácil</h2>
                     </div>
                     <div class="medio">
-                        <img src="../assets/images/gogeta.png" onclick="iniciarQuiz(14, 'medio')">
-                        <h2 onclick="iniciarQuiz(15, 'medio')">Médio</h2>
+                        <img src="../assets/images/gogeta.png" onclick="iniciarQuiz(14, 2)">
+                        <h2 onclick="iniciarQuiz(15, 2)">Médio</h2>
                     </div>
                     <div class="dificil">
-                        <img src="../assets/images/mui.png" onclick="iniciarQuiz(26, 'dificil')">
-                        <h2 onclick="iniciarQuiz(26, 'dificil')">Difícil</h2>
+                        <img src="../assets/images/mui.png" onclick="iniciarQuiz(26, 3)">
+                        <h2 onclick="iniciarQuiz(26, 3)">Difícil</h2>
                     </div>
                 </div>
                 </div>
@@ -312,7 +312,7 @@
                     <div class="mensagem">
                         <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz</span> </h1>
                         <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
-                        <span id="pontos_text">5</span>pts <br><br> Você está em um nível sayajin</p>
+                        <span id="pontos_text">5</span> pts <br><br> Você está em um nível sayajin</p>
             
                         <button class="botao" onclick="FecharModal()">voltar</button>
                         <button class="botao" onclick="reiniciarQuiz()">Reiniciar</button>
@@ -554,8 +554,8 @@
                     </div>
                     <div class="mensagem">
                         <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz</span> </h1>
-                        <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
-                        <span id="pontos_text">5</span>pts <br><br> Você está em um nível sayajin</p>
+                        <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text2">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
+                        <span id="pontos_text2">5</span> pts <br><br> Você está em um nível sayajin</p>
             
                         <button class="botao" onclick="FecharModal()">voltar</button>
                         <button class="botao" onclick="reiniciarQuiz()">Reiniciar</button>
@@ -820,8 +820,8 @@
                     </div>
                     <div class="mensagem">
                         <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz</span> </h1>
-                        <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
-                        <span id="pontos_text">5</span>pts <br><br> Você está em um nível sayajin</p>
+                        <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text3">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
+                        <span id="pontos_text3">5</span> pts <br><br> Você está em um nível sayajin</p>
             
                         <button class="botao" onclick="FecharModal()">voltar</button>
                         <button class="botao" onclick="reiniciarQuiz()">Reiniciar</button>
@@ -936,7 +936,11 @@
   function finalizarQuiz() {
     // Captura os dados do quiz
     document.getElementById('acertos_text').innerHTML = acertos;
+    document.getElementById('acertos_text2').innerHTML = acertos;
+    document.getElementById('acertos_text3').innerHTML = acertos;
     document.getElementById('pontos_text').innerHTML = pontuacao;
+    document.getElementById('pontos_text2').innerHTML = pontuacao;
+    document.getElementById('pontos_text3').innerHTML = pontuacao;
     var dadosQuiz = {
         dificuldade: dificuldade, // Variável de dificuldade que você já definiu
         acertos: acertos,         // Variável de acertos que você já definiu
@@ -967,15 +971,15 @@
     });
 }
 
-var acertos = 0
-var erros = 0
+var total_acertos = 0
+var total_erros = 0
 function obterPontos() {
     fetch(`/pontuacoes/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
-               var pontosRecebidos = resposta[0].total_pontos; 
+                var pontosRecebidos = resposta[0].total_pontos; 
                 var vezesRealizadas = resposta[0].quantidade// Atribua os dados à variável fora do escopo do fetch
                 var qtd_acertos = resposta[0].qtd_acertos
                 var qtd_erros = resposta[0].qtd_erros
@@ -985,8 +989,8 @@ function obterPontos() {
                 pts_kpi.innerHTML = `${pontosRecebidos} Pts`
                 vezes_kpi.innerHTML = `${vezesRealizadas} Vezes`
                 acertos_kpi.innerHTML = `${qtd_acertos} Acertos`
-                acertos = qtd_acertos
-                erros = qtd_erros
+                total_acertos = qtd_acertos
+                total_erros = qtd_erros
                 plotarGrafico()
             });
         } else {
@@ -1082,9 +1086,9 @@ var myPieChart;
 
         function plotarGrafico() {
             var data = {
-                labels: [`Acertos: ${acertos}`, `Erros: ${erros}`],
+                labels: [`Acertos: ${total_acertos}`, `Erros: ${total_erros}`],
                 datasets: [{
-                    data: [acertos, erros],
+                    data: [total_acertos, total_erros],
                     backgroundColor: ['blue', 'red']
                 }]
             };

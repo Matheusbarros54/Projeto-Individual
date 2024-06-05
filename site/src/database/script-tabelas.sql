@@ -1,32 +1,52 @@
-create database dragonball;
+CREATE DATABASE dragonball;
 
-use dragonball;
+USE dragonball;
 
-create table usuario (
-idUsuario int primary key auto_increment,
-nome varchar(50),
-email varchar(50),
-senha varchar(50));
+CREATE TABLE usuario (
+    idUsuario int PRIMARY KEY AUTO_INCREMENT,
+    nome varchar(50),
+    email varchar(50),
+    senha varchar(50)
+);
 
-create table pontuacoes (
-idPontuacao int primary key auto_increment,
-pontos_recebidos int,
-acertos int,
-erros int,
-dificuldade_quiz varchar(10),
-fkUsuario int,
-constraint foreign key (fkUsuario) references usuario (idUsuario));
+CREATE TABLE quiz (
+    idQuiz int PRIMARY KEY AUTO_INCREMENT,
+    dificuldade varchar(10)
+);
 
-insert into usuario values 
-(default, 'matheus', 'matheus@outlook.com', '123456'),
-(default, 'antônio', 'antonio@outlook.com', '123456'),
-(default, 'Renato', 'renato@outlook.com', '123456'),
-(default, 'Araújo', 'Araújo@outlook.com', '123456'),
-(default, 'Felps', 'Felps@outlook.com', '123456');
+CREATE TABLE pontuacoes (
+    idPontuacao int PRIMARY KEY AUTO_INCREMENT,
+    fkUsuario int,
+    fkQuiz int,
+    pontos_recebidos int,
+    acertos int,
+    erros int,
+    data_tentativa TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz)
+);
 
-insert into pontuacoes values 
-(default, 2, 4, 2, 'facil', 1),
-(default, 5, 4, 3, 'facil', 2),
-(default, 2, 4, 9, 'facil', 3),
-(default, 43, 4, 1, 'facil', 4),
-(default, 31, 4, 5, 'facil', 5);
+-- Inserindo dados na tabela usuario
+INSERT INTO usuario (nome, email, senha) VALUES 
+('matheus', 'matheus@outlook.com', '123456'),
+('antônio', 'antonio@outlook.com', '123456'),
+('Renato', 'renato@outlook.com', '123456'),
+('Araújo', 'Araújo@outlook.com', '123456'),
+('Felps', 'Felps@outlook.com', '123456');
+
+select * from usuario;
+-- Inserindo dados na tabela quiz
+INSERT INTO quiz (dificuldade) VALUES
+('facil'),
+('media'),
+('dificil'),
+('media'),
+('facil');
+
+-- Inserindo dados na tabela pontuacoes
+INSERT INTO pontuacoes (fkUsuario, fkQuiz, pontos_recebidos, acertos, erros) VALUES 
+(1, 1, 2, 4, 2),
+(2, 2, 5, 4, 3),
+(3, 1, 2, 4, 9),
+(4, 1, 43, 4, 1),
+(5, 1, 31, 4, 5);

@@ -2,10 +2,10 @@ var database = require("../database/config");
 
 function buscarUltimasPontuacoes(idUsuario, limite_linhas) {
 
-    var instrucaoSql = `SELECT usuario.*, SUM(pontuacoes.acertos) as qtd_acertos, sum(pontuacoes.erros) as qtd_erros, SUM(pontuacoes.pontos_recebidos) AS total_pontos, count(*) as quantidade  FROM 
-    pontuacoes JOIN usuario ON pontuacoes.fkUsuario = usuario.idUsuario
-	WHERE usuario.idUsuario = ${idUsuario} GROUP BY 
-    usuario.idUsuario;`;
+    var instrucaoSql = `select usuario.*, sum(pontuacoes.acertos) as qtd_acertos, sum(pontuacoes.erros) as qtd_erros, sum(pontuacoes.pontos_recebidos)
+    as total_pontos, count(*) as quantidade from usuario join pontuacoes on fkUsuario = idUsuario 
+    join quiz on idQuiz = fkQuiz
+    where idUsuario = ${idUsuario} group by idUsuario;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -13,16 +13,16 @@ function buscarUltimasPontuacoes(idUsuario, limite_linhas) {
 
 function buscarPontosPorNivel(idUsuario) {
 
-    var instrucaoSql = `select idUsuario, sum(pontuacoes.acertos) as acertos_totais, pontuacoes.dificuldade_quiz from pontuacoes join usuario on fkUsuario = idUsuario 
-    where idUsuario = ${idUsuario}
-    group by idUsuario, pontuacoes.dificuldade_quiz order by dificuldade_quiz;`;
+    var instrucaoSql = `select usuario.idUsuario, sum(pontuacoes.acertos) as acertos_totais, quiz.dificuldade from quiz join pontuacoes on idQuiz = fkQuiz
+    join usuario on fkUsuario = idUsuario where idUsuario = ${idUsuario} group by idUsuario, quiz.dificuldade order by quiz.dificuldade;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 function buscarPontuacoesEmTempoReal() {
 
-    var instrucaoSql = `select nome, sum(pontos_recebidos) as total_pontos from pontuacoes join usuario on fkUsuario = idUsuario group by usuario.nome order by total_pontos desc limit 5;`;
+    var instrucaoSql = `select usuario.nome, sum(pontuacoes.pontos_recebidos) as total_pontos from pontuacoes join usuario on idUsuario = fkUsuario 
+    group by usuario.nome order by total_pontos desc limit 5;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -30,8 +30,8 @@ function buscarPontuacoesEmTempoReal() {
 
 function inserirPontuacoes(idUsuario, dificuldade, pontos, erros, acertos) {
     var instrucaoSql = `
-    INSERT INTO pontuacoes (pontos_recebidos, acertos, erros, dificuldade_quiz, fkUsuario)
-    VALUES (${pontos}, ${acertos}, ${erros}, '${dificuldade}', ${idUsuario});`;
+    insert into pontuacoes (fkUsuario, fkQuiz, pontos_recebidos, acertos, erros) values
+    (${idUsuario}, ${dificuldade}, ${pontos}, ${acertos}, ${erros});`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

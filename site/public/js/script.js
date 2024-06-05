@@ -3,20 +3,20 @@ var qtd_perguntas_respondidas = 0;
 var acertos = 0;
 var pontuacao = 0;
 var erros = 0;
-var dificuldade = 'facil';
+var dificuldade = 1;
 
 var lista_respostas_facil = [2, 1, 4, 1, 1, 4, 2, 3, 4, 4];
 var lista_respostas_medio = [3, 4, 4, 2, 4, 3, 2, 4, 1, 3];
 var lista_respostas_dificil = [2, 4, 1, 1, 1, 2, 1, 4, 4, 3];
 
 function recuperarEstado() {
-    var estado = JSON.parse(localStorage.getItem('estadoQuiz'));
+    var estado = JSON.parse(sessionStorage.getItem('estadoQuiz'));
     if (estado) {
         qtd_perguntas_respondidas = estado.qtd_perguntas_respondidas;
         acertos = estado.acertos;
         pontuacao = estado.pontuacao;
         erros = estado.erros;
-        dificuldade = estado.dificuldade || 'facil';
+        dificuldade = estado.dificuldade || 1;
         return estado.paginaAtual;
     }
     return 1;
@@ -60,13 +60,13 @@ function verificarResposta(numero, divClicada) {
     var respostas_corretas;
     var pontuacao_atual;
     
-    if (dificuldade == 'facil') {
+    if (dificuldade == 1) {   //fácil
         respostas_corretas = lista_respostas_facil;
         pontuacao_atual = 1;
-    } else if (dificuldade == 'medio') {
+    } else if (dificuldade == 2) {   //médio
         respostas_corretas = lista_respostas_medio;
         pontuacao_atual = 2;
-    } else if (dificuldade == 'dificil') {
+    } else if (dificuldade == 3) {   //difícil
         respostas_corretas = lista_respostas_dificil;
         pontuacao_atual = 3;
     }
@@ -151,7 +151,7 @@ function reiniciarQuiz() {
     acertos = 0;
     pontuacao = 0;
     erros = 0;
-    dificuldade = 'facil';
+    dificuldade = 1;
     localStorage.removeItem('estadoQuiz');
     mostrarProximaPagina(1);
     var alternativas = document.querySelectorAll('.alternativa');
