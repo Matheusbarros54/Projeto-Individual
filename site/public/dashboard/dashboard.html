@@ -844,7 +844,7 @@
                 </a>
             </div>
 
-            <div class="btn-nav">
+            <div onclick="sairSessao()" class="btn-nav">
                 <h3>Sair</h3>
             </div>
 
@@ -934,6 +934,11 @@
   var idUsuario = sessionStorage.ID_USUARIO
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO
 
+  function sairSessao() {
+    sessionStorage.clear()
+    window.location = "/cadastro.html";
+  }
+
   function finalizarQuiz() {
     // Captura os dados do quiz
     document.getElementById('acertos_text').innerHTML = acertos;
@@ -970,6 +975,7 @@
     .catch(error => {
         console.error('Erro:', error);
     });
+    plotarGrafico()
 }
 
 var total_acertos = 0
@@ -994,7 +1000,7 @@ function obterPontos() {
                 total_acertos = qtd_acertos
                 total_erros = qtd_erros
                 pontos_totais = pontosRecebidos
-                plotarGrafico()
+            
                 selecionarPersonagem()
             });
         } else {
@@ -1083,8 +1089,9 @@ function PontosGerais() {
                 var nomeQuarto = resposta[1].nome;
                 var nomeQuinto = resposta[0].nome;
                 lista_pontos_ranking.push(pontosPrimeiro, pontosSegundo, pontosTerceiro, pontosQuarto, pontosQuinto)
-                verificacao()
-
+                
+                
+                
                 console.log(`${resposta[4].pontos_recebidos}`)
                 nome_primeiro.innerHTML = `${nomePrimeiro}`
                 nome_segundo.innerHTML = `${nomeSegundo}`
@@ -1096,6 +1103,8 @@ function PontosGerais() {
                 pts_terceiro.innerHTML = `${pontosTerceiro} Pts`
                 pts_quarto.innerHTML = `${pontosQuarto} Pts`
                 pts_quinto.innerHTML = `${pontosQuinto} Pts`
+                verificacao()
+                
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -1212,10 +1221,14 @@ var myPieChart;
     obterPontos();
     obterPontosPorNivel();
 
+
     // Define os intervalos de atualização
     setInterval(PontosGerais, 5000); // Atualiza a função PontosGerais a cada 1000 milissegundos (1 segundo)
-    setInterval(obterPontos, 5000); // Atualiza a função obterPontos a cada 1000 milissegundos (1 segundo)
+    setInterval(obterPontos, 5000);
+    setTimeout(plotarGrafico, 100)
+    setTimeout(plotarGrafico2, 100)// Atualiza a função obterPontos a cada 1000 milissegundos (1 segundo)
 };
+
 
 </script>
 <script src="../js/script.js"></script>
