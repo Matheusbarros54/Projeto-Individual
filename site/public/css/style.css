@@ -144,7 +144,7 @@ header .conteudo li img {
     align-items: center;
     justify-content: space-between;
     background-image: url(../assets/images/bannerGokuRed.jpg);
-    background-position: center center;
+    background-position: 0px 0px;
     background-size: cover;
     padding: 20vh 10vw;
 }
@@ -176,7 +176,7 @@ header .conteudo li img {
     display: flex;
     justify-content: start;
     align-items: center;
-    width: 45%;
+    width: 50%;
     flex-direction: column;
     margin-top: -100px;
     
@@ -188,12 +188,10 @@ header .conteudo li img {
     border-radius: 9px;
     padding: 0px 20px;
     padding-top: 5px;
-    padding-bottom: 50px;
     border: solid 3px #FF7F00;
     font-weight: 100;
     font-size: 1.2em;
     line-height: 2;
-    height: 305px;
     text-align: center;
 }
 
@@ -326,7 +324,7 @@ header .conteudo li img {
     background-image: url(../assets/images/backgroud_card.png);
     height: 270px;
     border-radius: 9px;
-    width: 350px;
+    width: 340px;
     border: solid 3px #FF7F00;
     display: flex;
     flex-direction: row;
@@ -396,7 +394,7 @@ header .conteudo li img {
     height: 100%;
     background-image: url(../assets/images/image\ 30.png);
     transition: background-size 1s ease-in-out, background-position 1s ease-in-out;
-    background-position: center center;
+    background-position: 0px center;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -589,9 +587,9 @@ dialog .mensagem {
     display: flex;
     justify-content: center;
     width: 350px;
-    height: 550px;
-    margin-right: 180px;
-    margin-left: 130px;
+    height: 500px;
+    margin-right: 210px;
+    margin-left: 90px;
     border-radius: 9px;
     background-image: url(../assets/images/android17.png);
     background-position: center center;

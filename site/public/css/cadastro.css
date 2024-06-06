@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: 'Bangers', cursive;
     color: white;
-    
+    overflow: hidden;
 }
 header {
     border-bottom: solid 3px #FF7F00;
@@ -22,10 +22,10 @@ header .conteudo {
 header .conteudo .lista{
     list-style-type: none;
     text-shadow:
-        -3px -3px 0 #000000,  
-         3px -3px 0 #000000,
-         -3px 3px 0 #000000,
-        3px 3px 0#000000;
+        -2px -2px 0 #000000,  
+         2px -2px 0 #000000,
+         -2px 2px 0 #000000,
+        2px 2px 0#000000;
         background-image: url(../assets/images/background.png);
         background-position: center -7px;
     background-size: cover;
@@ -35,6 +35,10 @@ header .conteudo .lista{
                 border-radius: 15px;
                 font-size: 1.25em;
                 cursor: pointer;
+                transition: transform 0.3s ease;
+    }
+    .lista:hover {
+        transform: scale(1.1);
     }
 
 header .conteudo .logo {

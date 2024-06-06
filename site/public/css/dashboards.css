@@ -50,7 +50,7 @@ body {
   width: 15%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   border-right: 3px solid #ffaf00;
   background-color: #212124;
@@ -88,11 +88,15 @@ body {
   background-size: cover;
     width: 130px;
     text-align: center;
-    padding: 5px 28px;
+    padding: 2% 10%;
     border-radius: 15px;
     height: 4%;
     font-size: 1em;
     cursor: pointer;
+    transition: transform 0.15s ease;
+}
+.btn-nav:hover {
+  transform: scale(1.1);
 }
 .btn-nav h3 {
   font-weight: 800;
@@ -271,7 +275,7 @@ font-size: 1.3em;
   flex-direction: row;
   justify-content: space-between;
   height: 300px;
-  margin: 80px 6%;
+  margin: 3% 4%;
 }
 
 .graficos-pizza .grafico1 {
@@ -378,7 +382,7 @@ dialog .mensagem {
 .mensagem p {
   font-size: 30px;
   font-weight: 100;
-  line-height: 1.5;
+  line-height: 1.1;
 }
 
 .botao {
@@ -502,7 +506,6 @@ dialog .mensagem {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 25%;
 }
 
 .alternativa h1,
@@ -665,10 +668,22 @@ transition: transform 0.3s ease;;
   text-align: center;
   color: white;
 }
+.nivelTexto {
+  background: var(--gradient-background);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
 
 .nome_usuario {
   font-size: 1.4em;
   font-weight: 800;
+  background: var(--gradient-background);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .placar_img_usuario {
@@ -708,7 +723,7 @@ transition: transform 0.3s ease;;
 }
 .pontuacao_leaderboard h1 {
  font-size: 1.3em;
- padding-right: 20px;
+ padding-right: 17px;
  font-weight: 800;
  padding-left: 20px;
   text-align: center;

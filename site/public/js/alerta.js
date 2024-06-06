@@ -18,6 +18,7 @@ function obterdados(idAquario) {
             console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
         });
 
+        
 }
 
 function alertar(resposta, idAquario) {
