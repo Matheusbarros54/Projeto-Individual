@@ -31,12 +31,12 @@ function salvarEstado(paginaAtual) {
         paginaAtual: paginaAtual,
         dificuldade: dificuldade
     };
-    localStorage.setItem('estadoQuiz', JSON.stringify(estado));
+    sessionStorage.setItem('estadoQuiz', JSON.stringify(estado));
 }
 
 function iniciarQuiz(paginaInicial, nivelDificuldade) {
     dificuldade = nivelDificuldade;
-    localStorage.removeItem('estadoQuiz');
+    sessionStorage.removeItem('estadoQuiz');
     qtd_perguntas_respondidas = 0;
     acertos = 0;
     pontuacao = 0;
@@ -152,7 +152,7 @@ function reiniciarQuiz() {
     pontuacao = 0;
     erros = 0;
     dificuldade = 1;
-    localStorage.removeItem('estadoQuiz');
+    sessionStorage.removeItem('estadoQuiz');
     mostrarProximaPagina(1);
     var alternativas = document.querySelectorAll('.alternativa');
     alternativas.forEach(alternativa => {

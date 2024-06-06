@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
 }
 
 /* PAGINA DOS GRÁFICOS 2023 */
@@ -70,17 +71,9 @@ body {
 .hello {
   width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-}
-
-.hello h3 {
-  color: white;
-  font-weight: 100;
-  font-size: 1.3rem;
-}
-
-.hello h3 span {
-  font-weight: 800;
 }
 
 .btn-nav {
@@ -206,7 +199,7 @@ body {
 .leaderboard {
   display: flex;
   flex-direction: column;
- justify-content: center;
+ justify-content: space-evenly;
  align-items: center; 
   width: 25%;
   background-color: #201F1F;
@@ -535,23 +528,19 @@ dialog .mensagem {
   border-radius: 10px;
   margin: 15px 0px;
   padding: 5px 0px;
+  user-select: none; /* Navegadores modernos */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
-.alternativa2 {
-  background-color: #2c78e9;
-  margin-left: 50px;
-  width: 400px;
-  border-radius: 20px;
-}
-
-.alternativa:hover,
-.alternativa2:hover {
-  background-color: #FF7F00;
+.alternativa:hover {
   cursor: pointer;
 }
 
+
 .certa {
-  background-color: green;
+  background-color: green !important;
 }
 
 .errada {
@@ -596,4 +585,224 @@ transition: transform 0.3s ease;;
 .dificuldades img:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+.img-usuario1 {
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background-image: url(../assets/images/Mestre\ Kame.jpeg);
+  background-size: cover;
+  background-position: center center;
+}
+.img-usuario2 {
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background-image: url(../assets/images/piccolo.jpeg);
+  background-size: cover;
+  background-position: center center;
+}
+.img-usuario3 {
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background-image: url(../assets/images/sayajin.jpeg);
+  background-size: cover;
+  background-position: 2px -30px;
+}
+.img-usuario4 {
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background-image: url(../assets/images/lendarioSSJ.jpeg);
+  background-size: cover;
+  background-position: center center;
+}
+.img-usuario5 {
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background-image: url(../assets/images/kaioshin.jpeg);
+  background-size: cover;
+  background-position: 0px 0px;
+}
+.img-usuario6 {
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background-image: url(../assets/images/semi-deus.jpeg);
+  background-size: cover;
+  background-position: 0px -5px;
+}
+.img-usuario7 {
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background-image: url(../assets/images/hakaishin.jpeg);
+  background-size: cover;
+  background-position: 0px -30px;
+}
+.img-usuario8 {
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background-image: url(../assets/images/whis.jpeg);
+  background-size: cover;
+  background-position: -5px 0px;
+}
+
+.leaderboard .img {
+  border-radius: 50px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.nivel_usuario {
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: 800;
+  text-align: center;
+  color: white;
+}
+
+.nome_usuario {
+  font-size: 1.4em;
+  font-weight: 800;
+}
+
+.placar_img_usuario {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  background-image: url(../assets/images/whis.jpeg);
+  background-size: cover;
+  background-position: -5px 0px;
+  flex: 0 0 40px; /* Fixar tamanho da imagem */
+}
+
+
+.leaderboard {
+  width: 27%;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.titulo-h1, .titulo-h3 {
+  text-align: center;
+}
+
+.pontuacao_leaderboard {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.pontuacao_leaderboard h2 {
+  margin: 0;
+  font-size: 1.2em;
+  flex: 1;
+  text-align: center;
+}
+.pontuacao_leaderboard h1 {
+ font-size: 1.3em;
+ padding-right: 20px;
+ font-weight: 800;
+ padding-left: 20px;
+  text-align: center;
+}
+
+.pontuacao_leaderboard .placar_img_usuario {
+  width: 50px;
+  height: 50px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  margin-right: 10px;
+  
+}
+
+.pontuacao_leaderboard .pts {
+  text-align: right;
+  flex: 0 0 auto; /* Remover tamanho fixo */
+}
+
+.placar_img_usuario1 {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  background-image: url(../assets/images/Mestre\ Kame.jpeg);
+  background-size: cover;
+  background-position: center center;
+  flex: 0 0 50px; /* Fixar tamanho da imagem */
+}
+.placar_img_usuario2 {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  background-image: url(../assets/images/piccolo.jpeg);
+  background-size: cover;
+  background-position: center center;
+  flex: 0 0 50px; /* Fixar tamanho da imagem */
+}
+.placar_img_usuario3 {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  background-image: url(../assets/images/sayajin.jpeg);
+  background-size: cover;
+  background-position: 2px -10px;
+  flex: 0 0 50px; /* Fixar tamanho da imagem */
+}
+.placar_img_usuario4 {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  background-image: url(../assets/images/lendarioSSJ.jpeg);
+  background-size: cover;
+  background-position: center center;
+  flex: 0 0 50px; /* Fixar tamanho da imagem */
+}
+.placar_img_usuario5 {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  background-image: url(../assets/images/kaioshin.jpeg);
+  background-size: cover;
+  background-position: 0px 0px;
+  flex: 0 0 50px; /* Fixar tamanho da imagem */
+}
+.placar_img_usuario6{
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  background-image: url(../assets/images/semi-deus.jpeg);
+  background-size: cover;
+  background-position: 0px -5px;
+  flex: 0 0 50px; /* Fixar tamanho da imagem */
+}
+.placar_img_usuario7 {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  background-image: url(../assets/images/hakaishin.jpeg);
+  background-size: cover;
+  background-position: 0px -10px;
+  flex: 0 0 50px; /* Fixar tamanho da imagem */
+}
+.placar_img_usuario8 {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  background-image: url(../assets/images/whis.jpeg);
+  background-size: cover;
+  background-position: -5px 0px;
+  flex: 0 0 50px; /* Fixar tamanho da imagem */
+}
+
+.pontuacao_leaderboard img {
+  width: 14%;
+  padding-left: 7px;
+  padding-right: 10px;
 }

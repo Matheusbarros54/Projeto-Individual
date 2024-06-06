@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="../assets/icon/esfera.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,9 +33,10 @@
     <div class="janela">
         <div class="header-left">
             <img src="../assets/images/logo.png" alt="">
-
             <div class="hello">
-                <h3>Olá, <span id="b_usuario" style="color: #ffaf00;"> usuário </span>!</h3>
+                <div id="img_usuario"></div>
+                <h3 class="nome_usuario"><span id="b_usuario" style="color: #ffaf00;"></span></h3>
+                <h3 class="nivel_usuario">Nível <span id="nivel_numero">1</span> <br> <span id="nivel_texto" style="color: #ffaf00;">Terráqueo</span></h3>
             </div>
 
             <div class="btn-nav" onclick="AbrirModal()">
@@ -312,7 +313,7 @@
                     <div class="mensagem">
                         <h1 class="h1-dialog">Resultado do <br> <span style="color: orange;">Quiz</span> </h1>
                         <p class="p-dialog">Parabéns, você acertou <br> <br> <span id="acertos_text">5</span> de 10 perguntas <br> <br> total de pontos recebidos:
-                        <span id="pontos_text">5</span> pts <br><br> Você está em um nível sayajin</p>
+                        <span id="pontos_text">5</span> pts</p>
             
                         <button class="botao" onclick="FecharModal()">voltar</button>
                         <button class="botao" onclick="reiniciarQuiz()">Reiniciar</button>
@@ -888,37 +889,37 @@
                 </div> -->
                 <h3 class="titulo-h3">Ranking</h3>
                 <div class="pontuacao_leaderboard">
-                    <h2>1°</h2>
+                    <img src="../assets/icon/primeiroLugar.png" alt="">
+                    <div id="placar_img_usuario1"></div>
                     <h2 id="nome_primeiro">Antônio</h2>
                     <h2 id="pts_primeiro">13 Pts</h2>
                 </div>
                 <div class="pontuacao_leaderboard">
-                    <h2>2°</h2>
+                    <img src="../assets/icon/segundoLugar.png" alt="">
+                    <div id="placar_img_usuario2"></div>
                     <h2 id="nome_segundo">Matheus</h2>
                     <h2 id="pts_segundo">11 Pts</h2>
                 </div>
                 <div class="pontuacao_leaderboard">
-                    <h2>3°</h2>
+                    <img src="../assets/icon/terceiroLugar.png" alt="">
+                    <div id="placar_img_usuario3"></div>
                     <h2 id="nome_terceiro">Renato</h2>
                     <h2 id="pts_terceiro">9 Pts</h2>
                 </div>
                 <div class="pontuacao_leaderboard">
-                    <h2>4°</h2>
+                    <h1>4°</h1>
+                    <div id="placar_img_usuario4"></div>
                     <h2 id="nome_quarto">Araújo</h2>
                     <h2 id="pts_quarto">8 Pts</h2>
                 </div>
                 <div class="pontuacao_leaderboard">
-                    <h2>5°</h2>
+                    <h1>5°</h1>
+                    <div id="placar_img_usuario5"></div>
                     <h2 id="nome_quinto">Felps</h2>
                     <h2 id="pts_quinto">7 Pts</h2>
                 </div>
             </div>
 
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
         </div>
     </div>
 
@@ -973,6 +974,7 @@
 
 var total_acertos = 0
 var total_erros = 0
+var pontos_totais = 0
 function obterPontos() {
     fetch(`/pontuacoes/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -991,7 +993,9 @@ function obterPontos() {
                 acertos_kpi.innerHTML = `${qtd_acertos} Acertos`
                 total_acertos = qtd_acertos
                 total_erros = qtd_erros
+                pontos_totais = pontosRecebidos
                 plotarGrafico()
+                selecionarPersonagem()
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -1030,6 +1034,38 @@ function obterPontosPorNivel() {
     
 }
 
+var lista_pontos_ranking = []
+var foto_ranking = []
+function verificacao() {
+    for(var index = 0; index < lista_pontos_ranking.length; index++){
+        var personagem = 0
+        var nivel = 0
+          if (lista_pontos_ranking[index] <= 5) {
+              foto_ranking.push(1) 
+
+            } else if(lista_pontos_ranking[index] <= 10) {
+            foto_ranking.push(2)
+
+        } else if(lista_pontos_ranking[index] <= 15) {
+            foto_ranking.push(3)
+
+        } else if(lista_pontos_ranking[index] <= 20) {
+            foto_ranking.push(4)
+
+        } else if(lista_pontos_ranking[index] <= 25) {
+            foto_ranking.push(5)
+
+        } else if(lista_pontos_ranking[index] <= 30) {
+            foto_ranking.push(6)
+ 
+        } else if (lista_pontos_ranking[index] <= 35) {
+            foto_ranking.push(7)
+        } else {
+            foto_ranking.push(8)
+        }
+        document.getElementById(`placar_img_usuario${index + 1}`).classList.add(`placar_img_usuario${foto_ranking[index]}`)
+    }
+}
 function PontosGerais() {
     fetch(`/pontuacoes/tempo-real`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -1046,6 +1082,8 @@ function PontosGerais() {
                 var nomeTerceiro = resposta[2].nome;
                 var nomeQuarto = resposta[1].nome;
                 var nomeQuinto = resposta[0].nome;
+                lista_pontos_ranking.push(pontosPrimeiro, pontosSegundo, pontosTerceiro, pontosQuarto, pontosQuinto)
+                verificacao()
 
                 console.log(`${resposta[4].pontos_recebidos}`)
                 nome_primeiro.innerHTML = `${nomePrimeiro}`
@@ -1067,16 +1105,6 @@ function PontosGerais() {
         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
     });
 }
-// Atualiza os pontos gerais a cada 10 segundos (10000 milissegundos)
-window.onload = function() {
-    PontosGerais();
-    obterPontos();
-    obterPontosPorNivel();
-
-    // Define os intervalos de atualização
-    setInterval(PontosGerais, 5000); // Atualiza a função PontosGerais a cada 1000 milissegundos (1 segundo)
-    setInterval(obterPontos, 5000); // Atualiza a função obterPontos a cada 1000 milissegundos (1 segundo)
-};
 
 var myPieChart;
         var myBarChart;
@@ -1143,6 +1171,51 @@ var myPieChart;
                 });
             }
         }
+        function selecionarPersonagem() {
+          var personagem = 0
+          var nivel = 0
+          if (pontos_totais <= 5) {
+              personagem = 1
+              nivel = `Terráqueo`
+            } else if(pontos_totais <= 10) {
+            personagem = 2
+            nivel = `namekuseijin`
+        } else if(pontos_totais <= 15) {
+            personagem = 3
+            nivel = `Sayajin`
+        } else if(pontos_totais <= 20) {
+            personagem = 4
+            nivel = `Lendário SSJ`
+        } else if(pontos_totais <= 25) {
+            personagem = 5
+            nivel = `Kaioshin`
+        } else if(pontos_totais <= 30) {
+            personagem = 6
+            nivel = `Semi-Deus`
+        } else if (pontos_totais <= 35) {
+            personagem = 7
+            nivel = `Hakaishin`
+        } else {
+            personagem = 8
+            nivel = `Anjo`
+        }
+        nivel_numero.innerHTML = personagem
+        nivel_texto.innerHTML = nivel
+        MostrarPersonagem(personagem)
+        }
+        function MostrarPersonagem(personagemid) {
+        document.getElementById("img_usuario").classList.add(`img-usuario${personagemid}`)
+      }
+
+    window.onload = function() {
+    PontosGerais();
+    obterPontos();
+    obterPontosPorNivel();
+
+    // Define os intervalos de atualização
+    setInterval(PontosGerais, 5000); // Atualiza a função PontosGerais a cada 1000 milissegundos (1 segundo)
+    setInterval(obterPontos, 5000); // Atualiza a função obterPontos a cada 1000 milissegundos (1 segundo)
+};
 
 </script>
 <script src="../js/script.js"></script>
