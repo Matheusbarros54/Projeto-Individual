@@ -9,17 +9,27 @@ var lista_respostas_facil = [2, 1, 4, 1, 1, 4, 2, 3, 4, 4];
 var lista_respostas_medio = [3, 4, 4, 2, 4, 3, 2, 4, 1, 3];
 var lista_respostas_dificil = [2, 4, 1, 1, 1, 2, 1, 4, 4, 3];
 
-function recuperarEstado() {
-    var estado = JSON.parse(sessionStorage.getItem('estadoQuiz'));
-    if (estado) {
-        qtd_perguntas_respondidas = estado.qtd_perguntas_respondidas;
-        acertos = estado.acertos;
-        pontuacao = estado.pontuacao;
-        erros = estado.erros;
-        dificuldade = estado.dificuldade || 1;
-        return estado.paginaAtual;
-    }
-    return 1;
+function AbrirModal() {
+    quizModal.showModal();
+    var paginaInicial = recuperarEstado();
+        
+        mostrarProximaPagina(paginaInicial);
+    
+}
+
+function FecharModal() {
+    quizModal.close();
+    salvarEstado(document.querySelector('.modal.page.current-page').classList[2].split('page')[1]);
+}
+
+function iniciarQuiz(paginaInicial, nivelDificuldade) {
+    dificuldade = nivelDificuldade;
+    sessionStorage.removeItem('estadoQuiz');
+    qtd_perguntas_respondidas = 0;
+    acertos = 0;
+    pontuacao = 0;
+    erros = 0;
+    mostrarProximaPagina(paginaInicial);
 }
 
 function salvarEstado(paginaAtual) {
@@ -34,15 +44,22 @@ function salvarEstado(paginaAtual) {
     sessionStorage.setItem('estadoQuiz', JSON.stringify(estado));
 }
 
-function iniciarQuiz(paginaInicial, nivelDificuldade) {
-    dificuldade = nivelDificuldade;
-    sessionStorage.removeItem('estadoQuiz');
-    qtd_perguntas_respondidas = 0;
-    acertos = 0;
-    pontuacao = 0;
-    erros = 0;
-    mostrarProximaPagina(paginaInicial);
+function recuperarEstado() {
+    var estado = JSON.parse(sessionStorage.getItem('estadoQuiz'));
+    if (estado) {
+        qtd_perguntas_respondidas = estado.qtd_perguntas_respondidas;
+        acertos = estado.acertos;
+        pontuacao = estado.pontuacao;
+        erros = estado.erros;
+        dificuldade = estado.dificuldade
+        return estado.paginaAtual;
+    }
+    return 1;
 }
+
+
+
+
 var contagem = 0
 function verificarResposta(numero, divClicada) {
     if (respostaSelecionada) {
@@ -82,9 +99,7 @@ function verificarResposta(numero, divClicada) {
         var alternativas = paginaAtual.querySelectorAll('.alternativa');
         var respostaCorretaIndex = respostas_corretas[qtd_perguntas_respondidas - 1] - 1;
 
-        if (respostaCorretaIndex >= 0 && respostaCorretaIndex < alternativas.length) {
-            alternativas[respostaCorretaIndex].classList.add("certa");
-        }
+        alternativas[respostaCorretaIndex].classList.add("certa");
     }
 
     setTimeout(() => {
@@ -102,12 +117,9 @@ function verificarResposta(numero, divClicada) {
         contagem = 0
        }
         
-        
-
         respostaSelecionada = false;
-    }, 1500);
-
-    
+    }, 1000);
+   
 }
 
 function mostrarProximaPagina(paginaNumero) {
@@ -128,24 +140,6 @@ function mostrarProximaPagina(paginaNumero) {
     }
 }
 
-function AbrirModal() {
-    var quizModal = document.getElementById('quizModal');
-    quizModal.showModal();
-    var paginaInicial = recuperarEstado();
-    
-    if (paginaInicial > document.querySelectorAll('.modal.page').length) {
-        reiniciarQuiz();
-    } else {
-        mostrarProximaPagina(paginaInicial);
-    }
-}
-
-function FecharModal() {
-    var quizModal = document.getElementById('quizModal');
-    quizModal.close();
-    salvarEstado(document.querySelector('.modal.page.current-page').classList[2].split('page')[1]);
-}
-
 function reiniciarQuiz() {
     qtd_perguntas_respondidas = 0;
     acertos = 0;
@@ -159,8 +153,6 @@ function reiniciarQuiz() {
         alternativa.classList.remove('certa', 'errada');
     });
 }
-
-document.getElementById('abrirQuizBtn').addEventListener('click', AbrirModal);
 
 document.addEventListener('DOMContentLoaded', (event) => {
     recuperarEstado();

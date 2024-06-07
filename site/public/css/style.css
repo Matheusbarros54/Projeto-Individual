@@ -11,18 +11,15 @@ body {
     /* Largura da barra de rolagem */
 }
 
-/* Estilizando o polegar (thumb) */
+/* Estilizando a barra de rolagem */
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(to bottom, #ac6003, #ffaf00);
-    /* Gradiente laranja */
     border-radius: 10px;
-    /* Borda arredondada */
 }
 
-/* Estilizando a pista (track) */
+/* Estilizando o (track) */
 ::-webkit-scrollbar-track {
     background: #1C1C1C;
-    /* Cor de fundo da pista */
 }
 
 header {
@@ -235,17 +232,13 @@ header .conteudo li img {
 @keyframes glow {
     0% {
         box-shadow: 0 0 10px rgb(253, 195, 2);
-        /* Sombra inicial */
     }
-
     50% {
         box-shadow: 0 0 20px rgb(241, 145, 0);
-        /* Sombra aumentando */
     }
 
     100% {
         box-shadow: 0 0 10px rgba(255, 238, 0, 0.7);
-        /* Sombra voltando ao estado inicial */
     }
 }
 
@@ -291,17 +284,14 @@ header .conteudo li img {
 @keyframes glow {
     0% {
         box-shadow: 0 0 10px rgb(253, 195, 2);
-        /* Sombra inicial */
     }
 
     50% {
         box-shadow: 0 0 20px rgb(241, 145, 0);
-        /* Sombra aumentando */
     }
 
     100% {
         box-shadow: 0 0 10px rgba(255, 238, 0, 0.7);
-        /* Sombra voltando ao estado inicial */
     }
 }
 
@@ -618,7 +608,6 @@ dialog .mensagem {
     background-size: cover;
 }
 
-/* Seção do Quiz */
 
 .section7 {
     display: flex;

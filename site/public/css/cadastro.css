@@ -94,19 +94,19 @@ section .conteudo-secao .foto2 {
     margin-top: 3%;
     text-align: center;
     text-shadow:
-        -5px -5px 0 #000000,  
-         5px -5px 0 #000000,
-         -5px 5px 0 #000000,
-        5px 5px 0#000000;
+        -3px -3px 0 #000000,  
+         3px -3px 0 #000000,
+         -3px 3px 0 #000000,
+        3px 3px 0#000000;
 }
 
 .inputs {
     font-size: 0.8em;
     text-shadow:
-        -3px -3px 0 #000000,  
-         3px -3px 0 #000000,
-         -3px 3px 0 #000000,
-        3px 3px 0#000000;
+        -2px -2px 0 #000000,  
+         2px -2px 0 #000000,
+         -2px 2px 0 #000000,
+        2px 2px 0#000000;
 }
 .inputs span {
     padding-bottom: 15px;
@@ -248,10 +248,10 @@ section .conteudo-secao .foto2 {
 .texto-input {
     text-align: center;
     text-shadow:
-        -5px -5px 0 #000000,  
-         5px -5px 0 #000000,
-         -5px 5px 0 #000000,
-         5px 5px 0#000000;
+        -3px -3px 0 #000000,  
+         3px -3px 0 #000000,
+         -3px 3px 0 #000000,
+         3px 3px 0#000000;
          font-size: 1.4em;
 }
 .texto-input span {
@@ -261,10 +261,10 @@ section .conteudo-secao .foto2 {
     font-weight: 100;
     text-align: center;
     text-shadow:
-        -3px -3px 0 #000000,  
-         3px -3px 0 #000000,
-         -3px 3px 0 #000000,
-        3px 3px 0#000000;
+        -2px -2px 0 #000000,  
+         2px -2px 0 #000000,
+         -2px 2px 0 #000000,
+        2px 2px 0#000000;
         cursor: pointer;
 }
 

@@ -66,7 +66,7 @@
     <section id="personagens" class="section4">
         <h1 class="titulo_secao4"><img width="40" src="assets/images/esfera2.png" alt="">Guerreiros Z</h1>
         <div class="box_slider">
-            <div onclick="abrirModal1()" class="box1">
+            <div onclick="abrirModal(personagem1)" class="box1">
                 <div class="esquerda-texto">
                     <h1>Goku</h1>
                     <p>Saiyajin determinado em busca constante de poder e justiça...</p>
@@ -79,14 +79,14 @@
                 
                 <div class="esquerda-dialog">
                     <div class="nome"><h1>Goku</h1></div>
-                    <div class="descricao"><p></p>
+                    <div class="descricao"><p>Goku, um Saiyajin criado na Terra, é um guerreiro com um espírito indomável e um coração puro. Enviado ao planeta ainda bebê, ele foi adotado por Son Gohan, um bondoso senhor que o criou com carinho e ensinou valores de bondade e justiça. Embora inicialmente destinado a conquistar a Terra, Goku se tornou seu maior defensor, sempre em busca de novos desafios e batalhas</p>
                     </div>
                     <div class="poder"> <h1>Poder de Luta: 16 Septilhões</h1></div>
             </div>
                 <div class="imagem-dialog1"></div>
             </div>
             </dialog>
-            <div onclick="abrirModal2()" class="box2">
+            <div onclick="abrirModal(personagem2)" class="box2">
                 <div class="esquerda-texto">
                     <h1>Vegeta</h1>
                     <p>saiyajin cuja busca por poder é impulsionada por orgulho...</p>
@@ -105,7 +105,7 @@
                 <div class="imagem-dialog2"></div>
             </div>
             </dialog>
-            <div onclick="abrirModal3()" class="box3">
+            <div onclick="abrirModal(personagem3)" class="box3">
                 <div class="esquerda-texto">
                     <h1>Gohan</h1>
                     <p>Filho de goku, e também um sayajin de coração nobre...</p>
@@ -129,7 +129,7 @@
     <section class="section4">
         <h1 class="titulo_secao4 titulo_secao4_2"><img width="40" src="assets/images/esfera2.png" alt="">Vilões</h1>
         <div class="box_slider">
-            <div onclick="abrirModal4()" class="box4">
+            <div onclick="abrirModal(personagem4)" class="box4">
                 <div class="esquerda-texto">
                     <h1>Freeza</h1>
                     <p>Freeza é um tirano galáctico cruel, com um poder absurdo...</p>
@@ -149,7 +149,7 @@
                 <div class="imagem-dialog4"></div>
             </div>
             </dialog>
-            <div onclick="abrirModal5()" class="box5">
+            <div onclick="abrirModal(personagem5)" class="box5">
                 <div class="esquerda-texto">
                     <h1>Jiren</h1>
                     <p>Jiren é um combatente misterioso, formidável e justo...</p>
@@ -169,7 +169,7 @@
                 <div class="imagem-dialog5"></div>
             </div>
             </dialog>
-            <div onclick="abrirModal6()" class="box6">
+            <div onclick="abrirModal(personagem6)" class="box6">
                 <div class="esquerda-texto">
                     <h1>Goku Black</h1>
                     <p>Antagonista sombrio, obsecado pela destruição...</p>
@@ -266,23 +266,9 @@
 
 </html>
 <script>
-function abrirModal1() {
-  personagem1.showModal();
+
+function abrirModal(personagem) {
+  personagem.showModal();
 }
-function abrirModal2() {
-  personagem2.showModal();
-}
-function abrirModal3() {
-  personagem3.showModal();
-}
-function abrirModal4() {
-  personagem4.showModal();
-}
-function abrirModal5() {
-  personagem5.showModal();
-}
-function abrirModal6() {
-  personagem6.showModal();
-}
+
 </script>
-<script src="js/script.js"></script>

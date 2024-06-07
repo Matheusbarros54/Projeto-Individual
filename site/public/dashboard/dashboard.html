@@ -19,14 +19,14 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-    <!-- scripts do Chart.js - 2022-1 -->
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!--FONT AWESOME-->
+
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
+
 
 <body>
 
@@ -833,12 +833,6 @@
             
             </dialog>
 
-            <!-- <div class="btn-nav">
-
-                <h3>Minigames</h3>
-
-            </div> -->
-
             <div class="btn-nav">
                     <h3>Configurações</h3>
                 </a>
@@ -860,10 +854,7 @@
                     <div class="kpi3"><h2>Quantidade Total de Acertos</h2> <h3 id="acertos_kpi">0</h3></div>
 
                 </div>
-                <!-- <div class="graficos">
-                    <h1 class="titulo-grafico">Quantidade de Pontos ao longo do Tempo</h1>
-                    <canvas id="myChart" width="780" height="230"></canvas>
-                </div> -->
+
                <div class="graficos-pizza">
                 <div class="grafico1"> 
                     <div class="titulo-grafico1">Comparação de Acertos e Erros</div>
@@ -881,12 +872,7 @@
             <div class="leaderboard">
                 <h1 class="titulo-h1">Placar de Líderes</h1>
                 <h3 id="div_mensagem" class="titulo-h3">Pontuações</h3>
-                <!-- <h3 class="titulo-h3">Você</h3>
-                <div class="pontuacao_usuario">
-                    <h2>2°</h2>
-                    <h2 id="nome_user_atual">Matheus</h2>
-                    <h2 id="pts_user_atual">11 Pts</h2>
-                </div> -->
+    
                 <h3 class="titulo-h3">Ranking</h3>
                 <div class="pontuacao_leaderboard">
                     <img src="../assets/icon/primeiroLugar.png" alt="">
@@ -928,308 +914,8 @@
 
 </html>
 
-<script>
-  var pontosRecebidos = 0; // Inicialize a variável fora do fetch
-  var vezesRealizadas = 0
-  var idUsuario = sessionStorage.ID_USUARIO
-  b_usuario.innerHTML = sessionStorage.NOME_USUARIO
-
-  function sairSessao() {
-    sessionStorage.clear()
-    window.location = "/cadastro.html";
-  }
-
-  function finalizarQuiz() {
-    // Captura os dados do quiz
-    document.getElementById('acertos_text').innerHTML = acertos;
-    document.getElementById('acertos_text2').innerHTML = acertos;
-    document.getElementById('acertos_text3').innerHTML = acertos;
-    document.getElementById('pontos_text').innerHTML = pontuacao;
-    document.getElementById('pontos_text2').innerHTML = pontuacao;
-    document.getElementById('pontos_text3').innerHTML = pontuacao;
-    var dadosQuiz = {
-        dificuldade: dificuldade, // Variável de dificuldade que você já definiu
-        acertos: acertos,         // Variável de acertos que você já definiu
-        erros: erros,             // Variável de erros que você já definiu
-        pontos: pontuacao         // Variável de pontuação que você já definiu
-    };
-
-    // Envia os dados ao servidor
-    fetch(`/pontuacoes/insert/${idUsuario}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dadosQuiz)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro ao enviar os resultados do quiz');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Resultados do quiz enviados com sucesso:', data);
-        // Aqui você pode redirecionar o usuário, mostrar uma mensagem de sucesso, etc.
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-    });
-    plotarGrafico()
-}
-
-var total_acertos = 0
-var total_erros = 0
-var pontos_totais = 0
-function obterPontos() {
-    fetch(`/pontuacoes/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-                var pontosRecebidos = resposta[0].total_pontos; 
-                var vezesRealizadas = resposta[0].quantidade// Atribua os dados à variável fora do escopo do fetch
-                var qtd_acertos = resposta[0].qtd_acertos
-                var qtd_erros = resposta[0].qtd_erros
-                console.log(`${pontosRecebidos}`)
-                // pts_user_atual.innerHTML = `${pontosRecebidos} Pts`
-                // nome_user_atual.innerHTML = `${sessionStorage.NOME_USUARIO}`
-                pts_kpi.innerHTML = `${pontosRecebidos} Pts`
-                vezes_kpi.innerHTML = `${vezesRealizadas} Vezes`
-                acertos_kpi.innerHTML = `${qtd_acertos} Acertos`
-                total_acertos = qtd_acertos
-                total_erros = qtd_erros
-                pontos_totais = pontosRecebidos
-            
-                selecionarPersonagem()
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    })
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        
-    });
-    
-    
-}
-var pontosFacil = 0
-var pontosMedio = 0
-var pontosDificil = 0
-function obterPontosPorNivel() {
-    fetch(`/pontuacoes/nivel/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-               pontosDificil = resposta[2].acertos_totais; 
-               pontosFacil = resposta[1].acertos_totais; 
-               pontosMedio = resposta[0].acertos_totais; 
-                plotarGrafico2()
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    })
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        
-    });
-    
-    
-}
-
-var lista_pontos_ranking = []
-var foto_ranking = []
-function verificacao() {
-    for(var index = 0; index < lista_pontos_ranking.length; index++){
-        var personagem = 0
-        var nivel = 0
-          if (lista_pontos_ranking[index] <= 5) {
-              foto_ranking.push(1) 
-
-            } else if(lista_pontos_ranking[index] <= 10) {
-            foto_ranking.push(2)
-
-        } else if(lista_pontos_ranking[index] <= 15) {
-            foto_ranking.push(3)
-
-        } else if(lista_pontos_ranking[index] <= 20) {
-            foto_ranking.push(4)
-
-        } else if(lista_pontos_ranking[index] <= 25) {
-            foto_ranking.push(5)
-
-        } else if(lista_pontos_ranking[index] <= 30) {
-            foto_ranking.push(6)
- 
-        } else if (lista_pontos_ranking[index] <= 35) {
-            foto_ranking.push(7)
-        } else {
-            foto_ranking.push(8)
-        }
-        document.getElementById(`placar_img_usuario${index + 1}`).classList.add(`placar_img_usuario${foto_ranking[index]}`)
-    }
-}
-function PontosGerais() {
-    fetch(`/pontuacoes/tempo-real`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-                var pontosPrimeiro = resposta[4].total_pontos; 
-                var pontosSegundo = resposta[3].total_pontos;
-                var pontosTerceiro = resposta[2].total_pontos; 
-                var pontosQuarto = resposta[1].total_pontos; 
-                var pontosQuinto = resposta[0].total_pontos; 
-                var nomePrimeiro = resposta[4].nome;
-                var nomeSegundo = resposta[3].nome;
-                var nomeTerceiro = resposta[2].nome;
-                var nomeQuarto = resposta[1].nome;
-                var nomeQuinto = resposta[0].nome;
-                lista_pontos_ranking.push(pontosPrimeiro, pontosSegundo, pontosTerceiro, pontosQuarto, pontosQuinto)
-                
-                
-                
-                console.log(`${resposta[4].pontos_recebidos}`)
-                nome_primeiro.innerHTML = `${nomePrimeiro}`
-                nome_segundo.innerHTML = `${nomeSegundo}`
-                nome_terceiro.innerHTML = `${nomeTerceiro}`
-                nome_quarto.innerHTML = `${nomeQuarto}`
-                nome_quinto.innerHTML = `${nomeQuinto}`
-                pts_primeiro.innerHTML = `${pontosPrimeiro} Pts`
-                pts_segundo.innerHTML = `${pontosSegundo} Pts`
-                pts_terceiro.innerHTML = `${pontosTerceiro} Pts`
-                pts_quarto.innerHTML = `${pontosQuarto} Pts`
-                pts_quinto.innerHTML = `${pontosQuinto} Pts`
-                verificacao()
-                
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    })
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
-}
-
-var myPieChart;
-        var myBarChart;
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var ctx2 = document.getElementById('myChart2').getContext('2d');
-        Chart.defaults.color = "#fff";
-
-        function plotarGrafico() {
-            var data = {
-                labels: [`Acertos: ${total_acertos}`, `Erros: ${total_erros}`],
-                datasets: [{
-                    data: [total_acertos, total_erros],
-                    backgroundColor: ['blue', 'red']
-                }]
-            };
-
-            var options = {
-                responsive: false,
-                maintainAspectRatio: false
-            };
-
-            if (myPieChart) {
-                myPieChart.data = data;
-                myPieChart.update();
-            } else {
-                myPieChart = new Chart(ctx, {
-                    type: 'pie',
-                    data: data,
-                    options: options
-                });
-            }
-        }
-
-        function plotarGrafico2() {
-            var data2 = {
-                labels: ['Fácil', 'Médio', 'Difícil'],
-                datasets: [{
-                    label: 'Pontos',
-                    data: [pontosFacil, pontosMedio, pontosDificil],
-                    backgroundColor: 'orange',
-                    borderColor: 'white',
-                    borderWidth: 1
-                }]
-            };
-
-            var options2 = {
-                responsive: false,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            };
-
-            if (myBarChart) {
-                myBarChart.data = data2;
-                myBarChart.update();
-            } else {
-                myBarChart = new Chart(ctx2, {
-                    type: 'bar',
-                    data: data2,
-                    options: options2
-                });
-            }
-        }
-        function selecionarPersonagem() {
-          var personagem = 0
-          var nivel = 0
-          if (pontos_totais <= 5) {
-              personagem = 1
-              nivel = `Terráqueo`
-            } else if(pontos_totais <= 10) {
-            personagem = 2
-            nivel = `namekuseijin`
-        } else if(pontos_totais <= 15) {
-            personagem = 3
-            nivel = `Sayajin`
-        } else if(pontos_totais <= 20) {
-            personagem = 4
-            nivel = `Lendário SSJ`
-        } else if(pontos_totais <= 25) {
-            personagem = 5
-            nivel = `Kaioshin`
-        } else if(pontos_totais <= 30) {
-            personagem = 6
-            nivel = `Semi-Deus`
-        } else if (pontos_totais <= 35) {
-            personagem = 7
-            nivel = `Hakaishin`
-        } else {
-            personagem = 8
-            nivel = `Anjo`
-        }
-        nivel_numero.innerHTML = personagem
-        nivel_texto.innerHTML = nivel
-        MostrarPersonagem(personagem)
-        }
-        function MostrarPersonagem(personagemid) {
-        document.getElementById("img_usuario").classList.add(`img-usuario${personagemid}`)
-      }
-
-    window.onload = function() {
-    PontosGerais();
-    obterPontos();
-    obterPontosPorNivel();
-
-
-    // Define os intervalos de atualização
-    setInterval(PontosGerais, 5000); // Atualiza a função PontosGerais a cada 1000 milissegundos (1 segundo)
-    setInterval(obterPontos, 5000);
-    setTimeout(plotarGrafico, 100)
-    setTimeout(plotarGrafico2, 100)// Atualiza a função obterPontos a cada 1000 milissegundos (1 segundo)
-};
-
-
-</script>
+<script src="../js/fetchDash.js"></script>
+<script src="../js/graficos.js"></script>
+<script src="../js/dashboard.js"></script>
 <script src="../js/script.js"></script>
 
