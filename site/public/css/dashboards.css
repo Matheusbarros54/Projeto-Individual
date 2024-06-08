@@ -333,6 +333,22 @@ dialog {
   height: 80vh;
   padding: 0;
 }
+dialog .div_botaoFechar {
+  position: fixed;
+  width: 69.5vw;
+  padding-top: 5px;
+  text-align: end;
+  z-index: 999;
+}
+.botaoFechar {
+  font-size: 1.5em;
+  transition: transform 0.3s ease;
+}
+.botaoFechar:hover {
+transform: scale(1.2);
+cursor: pointer;
+color: #FF7F00;
+}
 
 dialog .modal {
   display: flex;
@@ -423,6 +439,12 @@ dialog .mensagem {
       -2px 2px 0 #000000,
       2px 2px 0#000000;
 
+}
+.botao:hover {
+  transform: scale(1.1);
+}
+.botao2:hover {
+  transform: scale(1.1);
 }
 
 .modal .page {

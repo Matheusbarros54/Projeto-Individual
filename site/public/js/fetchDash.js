@@ -40,6 +40,10 @@ function finalizarQuiz() {
 function atualizarUsuario() {
     var senha = ipt_senha.value;
     var confirmar_senha = ipt_senhaConfirmacao.value
+    if(senha.length < 6) {
+        alert('Digite uma senha válida (Pelo menos 6 caracteres)')
+        return
+    }
     if(senha != confirmar_senha) {
         alert('A confirmação de senha precisa ser igual')
         return

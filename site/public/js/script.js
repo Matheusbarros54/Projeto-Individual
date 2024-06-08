@@ -13,8 +13,7 @@ function AbrirModal() {
     quizModal.showModal();
     var paginaInicial = recuperarEstado();
         
-        mostrarProximaPagina(paginaInicial);
-    
+        mostrarProximaPagina(paginaInicial);    
 }
 
 function FecharModal() {
