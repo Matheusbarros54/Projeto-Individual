@@ -11,6 +11,27 @@ var foto_ranking = []
 var idUsuario = sessionStorage.ID_USUARIO
 b_usuario.innerHTML = sessionStorage.NOME_USUARIO
 
+
+function AbrirConfiguracoes() {
+    modal_configuracoes.showModal()
+}
+
+function TrocarBackground() {
+   trocarFundo.style.display = 'none'
+   trocarSenha.style.display = 'none'
+   background.style.display = 'flex'
+}
+var stage = sessionStorage.numeroStage
+dash.classList.remove(`fotoStage1`)
+dash.classList.add(`fotoStage${stage}`)
+
+function verificarStage(numeroStage) {
+    dash.classList.remove(`fotoStage${stage}`)
+    sessionStorage.removeItem(numeroStage)
+    sessionStorage.setItem('numeroStage', numeroStage);
+    stage = sessionStorage.numeroStage
+    dash.classList.add(`fotoStage${stage}`)
+}
   function sairSessao() {
     sessionStorage.clear()
     window.location = "/cadastro.html";

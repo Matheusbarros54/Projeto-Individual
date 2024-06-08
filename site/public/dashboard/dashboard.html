@@ -833,10 +833,28 @@
             
             </dialog>
 
-            <div class="btn-nav">
-                    <h3>Configurações</h3>
-                </a>
-            </div>
+            <div onclick="AbrirConfiguracoes()" class="btn-nav">
+                <h3>Configurações</h3>
+            </a>
+        </div>
+        <dialog id="modal_configuracoes">
+            <div class="configuracoes">
+            <div id="trocarSenha" class="trocarSenha"><h1>Trocar Senha</h1></div>
+            <div onclick="TrocarBackground()" id="trocarFundo" class="trocarFundo"><h1>Trocar Background</h1></div>
+                <div style="display: none;" id="background" class="background">
+                    <div class="primeira_fileira">
+                    <div onclick="verificarStage(1)" class="stage fotoStage1"></div>
+                    <div onclick="verificarStage(2)" class="stage fotoStage2"></div>
+                    <div onclick="verificarStage(3)" class="stage fotoStage3"></div>
+                </div>
+                <div class="segunda_fileira">
+                    <div onclick="verificarStage(4)" class="stage fotoStage4"></div>
+                    <div onclick="verificarStage(5)" class="stage fotoStage5"></div>
+                    <div onclick="verificarStage(6)" class="stage fotoStage6"></div>
+                </div>
+                </div>
+        </div>
+        </dialog> 
 
             <div onclick="sairSessao()" class="btn-nav">
                 <h3>Sair</h3>
@@ -845,7 +863,7 @@
         </div>
         <div class="conteudo">
 
-            <div class="dash">
+            <div id="dash" class="dash">
                 <h1 class="titulo-dash">Painel de Controle</h1>
 
                 <div class="kpis">
