@@ -13,7 +13,7 @@ function finalizarQuiz() {
         pontos: pontuacao        
     };
 
-
+    
     fetch(`/pontuacoes/insert/${idUsuario}`, {
         method: 'POST',
         headers: {
@@ -37,6 +37,38 @@ function finalizarQuiz() {
     plotarGrafico()
 }
 
+function atualizarUsuario() {
+    var senha = ipt_senha.value;
+    var confirmar_senha = ipt_senhaConfirmacao.value
+    if(senha != confirmar_senha) {
+        alert('A confirmação de senha precisa ser igual')
+        return
+    }
+    alert(`Senha alterada com sucesso!`)
+    var dadosSenha = {
+        senha: senha
+    };
+    
+    fetch(`/usuarios/update/${idUsuario}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosSenha)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao atualizar a senha do usuário');
+        }
+        return response.text(); 
+    })
+    .then(data => {
+        console.log('Resposta do servidor:', data);
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+    });
+}
 
 function obterPontos() {
     fetch(`/pontuacoes/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {

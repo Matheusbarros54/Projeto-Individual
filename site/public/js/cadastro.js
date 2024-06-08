@@ -112,3 +112,5 @@ function trocar() {
 
     return false;
   }
+
+  

@@ -852,6 +852,9 @@ cursor: pointer;
   width: 100%;
   height: 100%;
 }
+.background h1 {
+  margin: 20px;
+}
 .primeira_fileira {
   display: flex;
   flex-direction: row;
@@ -907,4 +910,34 @@ cursor: pointer;
   background-image: url(../assets/images/stage6.jpeg);
   background-position: center center;
   background-size: cover;
+}
+
+.senha {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 65%;
+  height: 90%;
+}
+.senha h2 {
+  text-align: start;
+  font-size: 1.3em;
+  width: 100%;
+}
+.senha input {
+  width: 100%;
+  height: 40px;
+  background-color: #272727;
+  border: #ffcb00 2px solid;
+  padding-left: 5px;
+  color: white;
+}
+
+.senha input::placeholder {
+  color: rgb(180, 179, 179);
+}
+.ipt_desabilitado {
+  cursor: not-allowed;
+  color: white;
 }

@@ -9,8 +9,6 @@
     <title>Dragon Ball | Dashboard </title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     
 
@@ -839,9 +837,25 @@
         </div>
         <dialog id="modal_configuracoes">
             <div class="configuracoes">
-            <div id="trocarSenha" class="trocarSenha"><h1>Trocar Senha</h1></div>
+            <div id="trocarSenha" class="trocarSenha" onclick="TrocarSenha()"><h1>Trocar Senha</h1>
+  
+            </div>
+            <div class="senha" id="senha" style="display: none;"> 
+            
+                <h1>Redefinir Senha</h1>
+                <h2>Nome:</h2>
+                <input type="text" id="ipt_nome" class="ipt_desabilitado" disabled>
+                <h2>Email:</h2>
+                <input type="text" id="ipt_email" class="ipt_desabilitado" disabled>
+                <h2>Nova Senha:</h2>
+                <input type="password" id="ipt_senha" placeholder="digite sua nova senha">
+                <h2>Confirmar Senha:</h2>
+                <input type="password" placeholder="confirme sua nova senha" id="ipt_senhaConfirmacao">
+                <button onclick="atualizarUsuario()" class="botao">Redefinir Senha</button>
+            </div>
             <div onclick="TrocarBackground()" id="trocarFundo" class="trocarFundo"><h1>Trocar Background</h1></div>
                 <div style="display: none;" id="background" class="background">
+                    <h1>Escolha uma imagem de fundo:</h1>
                     <div class="primeira_fileira">
                     <div onclick="verificarStage(1)" class="stage fotoStage1"></div>
                     <div onclick="verificarStage(2)" class="stage fotoStage2"></div>
@@ -932,7 +946,7 @@
 
 </html>
 
-<script src="../js/fetchDash.js"></script>
+<script src="../js/fetchDash.js">document.getElementById('nomeUsuario').innerHTML = 'aadasddasd';</script>
 <script src="../js/graficos.js"></script>
 <script src="../js/dashboard.js"></script>
 <script src="../js/script.js"></script>
