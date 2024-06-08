@@ -1,11 +1,6 @@
 var pontosRecebidos = 0; 
 var vezesRealizadas = 0
-var total_acertos = 0
-var total_erros = 0
 var pontos_totais = 0
-var pontosFacil = 0
-var pontosMedio = 0
-var pontosDificil = 0
 var lista_pontos_ranking = []
 var foto_ranking = []
 var idUsuario = sessionStorage.ID_USUARIO
@@ -134,10 +129,12 @@ function verificacao() {
     PontosGerais();
     obterPontos();
     obterPontosPorNivel();
+    selecionarPersonagem();
+    plotarGrafico();
+    atualizarPagFinal();
 
     
     setInterval(PontosGerais, 5000); 
+    setInterval(obterPontosPorNivel, 5000); 
     setInterval(obterPontos, 5000);
-    setTimeout(plotarGrafico, 100)
-    setTimeout(plotarGrafico2, 100)
 };

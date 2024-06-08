@@ -1,11 +1,22 @@
+var total_acertos = 0
+var total_erros = 0
+var pontosFacil = 0
+var pontosMedio = 0
+var pontosDificil = 0
+var estadoQuiz = JSON.parse(sessionStorage.getItem('estadoQuiz'));
+
+function atualizarPagFinal() {
+    estadoQuiz = JSON.parse(sessionStorage.getItem('estadoQuiz'));
+    document.getElementById('acertos_text').innerHTML = estadoQuiz.acertos;
+    document.getElementById('acertos_text2').innerHTML = estadoQuiz.acertos;
+    document.getElementById('acertos_text3').innerHTML = estadoQuiz.acertos;
+    document.getElementById('pontos_text').innerHTML = estadoQuiz.pontuacao;
+    document.getElementById('pontos_text2').innerHTML = estadoQuiz.pontuacao;
+    document.getElementById('pontos_text3').innerHTML = estadoQuiz.pontuacao;
+}
 function finalizarQuiz() {
    
-    document.getElementById('acertos_text').innerHTML = acertos;
-    document.getElementById('acertos_text2').innerHTML = acertos;
-    document.getElementById('acertos_text3').innerHTML = acertos;
-    document.getElementById('pontos_text').innerHTML = pontuacao;
-    document.getElementById('pontos_text2').innerHTML = pontuacao;
-    document.getElementById('pontos_text3').innerHTML = pontuacao;
+    atualizarPagFinal()
     var dadosQuiz = {
         dificuldade: dificuldade, 
         acertos: acertos,         
@@ -13,7 +24,7 @@ function finalizarQuiz() {
         pontos: pontuacao        
     };
 
-    
+   
     fetch(`/pontuacoes/insert/${idUsuario}`, {
         method: 'POST',
         headers: {
@@ -34,7 +45,8 @@ function finalizarQuiz() {
     .catch(error => {
         console.error('Erro:', error);
     });
-    plotarGrafico()
+    contadorGrafico = 0
+    contadorGrafico2 = 0
 }
 
 function atualizarUsuario() {
@@ -73,7 +85,7 @@ function atualizarUsuario() {
         console.error('Erro:', error);
     });
 }
-
+var contadorGrafico = 0
 function obterPontos() {
     fetch(`/pontuacoes/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -92,7 +104,10 @@ function obterPontos() {
                 total_acertos = qtd_acertos
                 total_erros = qtd_erros
                 pontos_totais = pontosRecebidos
-            
+                if(contadorGrafico == 0) {
+                    setTimeout(plotarGrafico, 100);
+                    }
+                contadorGrafico++
                 selecionarPersonagem()
             });
         } else {
@@ -106,17 +121,24 @@ function obterPontos() {
     
     
 }
-
+var contadorGrafico2 = 0
 function obterPontosPorNivel() {
     fetch(`/pontuacoes/nivel/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
-               pontosDificil = resposta[2].acertos_totais; 
-               pontosFacil = resposta[1].acertos_totais; 
-               pontosMedio = resposta[0].acertos_totais; 
-                plotarGrafico2()
+                resposta.forEach(function(quiz) {
+                    if (quiz.dificuldade === 'dificil') {
+                        pontosDificil = quiz.acertos_totais;
+                    } else if (quiz.dificuldade === 'facil') {
+                        pontosFacil = quiz.acertos_totais;
+                    } else if (quiz.dificuldade === 'media') {
+                        pontosMedio = quiz.acertos_totais;
+                    }
+                });
+                
+            
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -126,6 +148,10 @@ function obterPontosPorNivel() {
         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         
     });
+    if(contadorGrafico2 == 0) {
+        setTimeout(plotarGrafico2, 100)
+       }
+       contadorGrafico2++
        
 }
 
