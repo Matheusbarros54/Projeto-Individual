@@ -15,8 +15,7 @@ function atualizarPagFinal() {
     document.getElementById('pontos_text3').innerHTML = estadoQuiz.pontuacao;
 }
 function finalizarQuiz() {
-   
-    atualizarPagFinal()
+    sessionStorage.removeItem('contagem');
     var dadosQuiz = {
         dificuldade: dificuldade, 
         acertos: acertos,         
@@ -45,6 +44,10 @@ function finalizarQuiz() {
     .catch(error => {
         console.error('Erro:', error);
     });
+    setTimeout(atualizarPagFinal, 500);
+    setTimeout(PontosGerais, 500); 
+    setTimeout(obterPontosPorNivel, 500); 
+    setTimeout(obterPontos, 500);
     contadorGrafico = 0
     contadorGrafico2 = 0
 }
@@ -86,6 +89,7 @@ function atualizarUsuario() {
     });
 }
 var contadorGrafico = 0
+
 function obterPontos() {
     fetch(`/pontuacoes/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {

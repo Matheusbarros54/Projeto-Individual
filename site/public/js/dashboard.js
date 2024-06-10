@@ -124,7 +124,8 @@ function verificacao() {
         function MostrarPersonagem(personagemid) {
         document.getElementById("img_usuario").classList.add(`img-usuario${personagemid}`)
       }
-
+      
+    var onload = sessionStorage.getItem('contagemCarregar');
     window.onload = function() {
     PontosGerais();
     obterPontos();
@@ -134,7 +135,5 @@ function verificacao() {
     atualizarPagFinal();
 
     
-    setInterval(PontosGerais, 5000); 
-    setInterval(obterPontosPorNivel, 5000); 
-    setInterval(obterPontos, 5000);
+    
 };

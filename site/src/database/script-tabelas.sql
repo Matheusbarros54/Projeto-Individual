@@ -45,8 +45,8 @@ INSERT INTO quiz (dificuldade) VALUES
 
 -- Inserindo dados na tabela pontuacoes
 INSERT INTO pontuacoes (fkUsuario, fkQuiz, pontos_recebidos, acertos, erros) VALUES 
-(1, 1, 2, 4, 2),
-(2, 2, 5, 4, 3),
-(3, 1, 2, 4, 9),
-(4, 1, 43, 4, 1),
-(5, 1, 31, 4, 5);
+(1, 3, 27, 9, 1),
+(2, 2, 22, 11, 9),
+(3, 1, 6, 6, 4),
+(4, 3, 42, 14, 6),
+(5, 2, 34, 17, 3);

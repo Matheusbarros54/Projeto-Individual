@@ -12,11 +12,11 @@
 <body>
     <header>
         <div class="conteudo">
-            <li class="lista">Personagens</li>
-            <li class="lista">Sobre Mim</li>
-            <li class="logo"><img src="assets/images/logo.png"></li>
-            <li class="lista">Akira</li>
-            <li class="lista">Cadastrar</li>
+            <a href="index.html#personagens"><li class="lista">Personagens</li></a>
+            <a href="index.html#sobre-mim"> <li class="lista">Sobre Mim</li></a>
+            <a href="index.html"><li class="logo"><img src="assets/images/logo.png"></li></a>
+            <a href="index.html#akira"><li class="lista">Akira</li></a>
+            <a href="cadastro.html"><li class="lista">Cadastrar</li></a>
         </div>
     </header>
     <section id="section_principal">
@@ -26,7 +26,7 @@
                 <h1>Cadastre-se</h1>
                 <div class="inputs">
                     <div class="input-isolada">
-                      <div class="mensagens-input"><span>Usuário</span><span class="msg_erro" id="erro_usuario">- Esse Usuário já existe</span></div> 
+                      <div class="mensagens-input"><span>Usuário</span><span class="msg_erro" id="erro_usuario">- Usuário Não pode ter mais que 10 caracteres</span></div> 
                         <div class="field-group">
                             <input id="nome_input" type="text" class="input-field" placeholder="Digite seu usuário" autocomplete="off">
                             <div class="icon">

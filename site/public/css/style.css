@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: 'Bangers', cursive;
@@ -592,8 +596,8 @@ dialog .mensagem {
     height: 350px;
     margin-left: 20px;
     border-radius: 9px;
-    background-image: url(../assets/images/Akira.png);
-    background-position: center center;
+    background-image: url(../assets/images/Matheus.png);
+    background-position: center -55px;
     background-size: cover;
 }
 .foto6 {
@@ -696,6 +700,11 @@ footer {
 .copyright h1 {
     font-weight: 100;
     font-size: 18px;
+    text-shadow:
+        -2px -2px 0 #000000,
+        2px -2px 0 #000000,
+        -2px 2px 0 #000000,
+        2px 2px 0#000000;
 }
 
 /* MODAl PERSONAGENS */

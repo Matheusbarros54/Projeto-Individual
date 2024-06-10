@@ -20,6 +20,13 @@ function trocar() {
       return false;
     } 
     
+    if(nomeVar.length > 10) {
+      erro_usuario.style.opacity = '1'
+    }
+    else {
+      erro_usuario.style.opacity = '0'
+      validacao++
+    }
     if(senhaVar.length < 6) {
       erro_senha.style.opacity = '1'
     } else {
@@ -40,7 +47,7 @@ function trocar() {
       erro_email.style.opacity = '0'
       validacao++
     }
-    if(validacao < 3) {
+    if(validacao < 4) {
       return false
     }
 

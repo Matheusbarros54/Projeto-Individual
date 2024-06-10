@@ -7,7 +7,7 @@ var dificuldade = 1;
 
 var lista_respostas_facil = [2, 1, 4, 1, 1, 4, 2, 3, 4, 4];
 var lista_respostas_medio = [3, 4, 4, 2, 4, 3, 2, 4, 1, 3];
-var lista_respostas_dificil = [2, 4, 1, 1, 1, 2, 1, 4, 4, 3];
+var lista_respostas_dificil = [2, 4, 1, 1, 1, 2, 2, 1, 4, 3];
 
 function AbrirModal() {
     quizModal.showModal();
@@ -59,7 +59,10 @@ function recuperarEstado() {
 
 
 
-var contagem = 0
+var contagem = sessionStorage.getItem('contagem');
+if (contagem === null) {
+    contagem = 0;
+}
 function verificarResposta(numero, divClicada) {
     if (respostaSelecionada) {
         return;
@@ -111,6 +114,7 @@ function verificarResposta(numero, divClicada) {
             salvarEstado(proximaPaginaNumero);
         }
         contagem++
+        sessionStorage.setItem('contagem', contagem);
        if(contagem == 10) {
         finalizarQuiz();
         contagem = 0
